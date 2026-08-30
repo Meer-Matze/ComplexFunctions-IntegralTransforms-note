@@ -1,0 +1,34 @@
+\input{\path/cover_text_\myIndex.tex}
+
+\newpage
+\thispagestyle{empty}
+\begin{center}
+    \Huge\textbf{\myForeword}
+\end{center}
+\myForewordText
+\begin{flushright}
+    \begin{tabular}{c}
+        \myDateForeword
+    \end{tabular}
+\end{flushright}
+
+\newpage
+\pagestyle{plain}
+\setcounter{page}{1}
+\pagenumbering{Roman}
+\pagestyle{fancy}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+
+
+
+
+
+

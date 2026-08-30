@@ -1,0 +1,21 @@
+# LaTeX 临时文件
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.pdf
+*.fdb_latexmk
+*.fls
+*.blg
+*.bbl
+*.nav
+*.snm
+*.vrb
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.run.xml
+*.bcf

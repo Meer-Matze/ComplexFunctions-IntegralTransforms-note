@@ -1,0 +1,34 @@
+\input{\path/package.tex}
+
+% 定理环境设置
+\input{\path/theorem1_zh.tex}
+
+\input{\path/custom.tex}
+
+% 修改参数改变封面样式，0 默认原始封面、内置其他1、2、3种封面样式
+\def\myIndex{3}
+
+
+\ifnum\myIndex>0
+    \input{\path/cover_package_\myIndex} 
+\fi
+
+\def\myTitle{复变函数与积分变换笔记}
+\def\myAuthor{M.K.}
+\def\myDateCover{\today}
+\def\myDateForeword{\today}
+\def\myForeword{前言}
+\def\myForewordText{
+    
+    这是一个基于\LaTeX{}模板的复变函数与积分变换笔记．
+    内容参考了包括但不限于以下资料：
+    \begin{itemize}
+        \item 《复变函数与积分变换》（科学出版社）第三版
+        \item 《复变函数习题精选精讲》（山东科学技术出版社）第一版
+    \end{itemize}
+
+    封面来源于\href{https://www.pixiv.net/users/2642047}{アシマ / Ashima}的作品\href{https://www.pixiv.net/artworks/147092236}{Assembly}
+    如有侵权请联系我删除．
+}
+\def\mySubheading{副标题}
+

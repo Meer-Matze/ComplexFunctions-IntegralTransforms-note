@@ -1,0 +1,106 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
+\def\path{../config}
+\input{../config/_config}
+\begin{document}
+%\input{../config/cover}
+\else
+\fi
+
+\chapter{复数与复变函数}
+\section{复数}
+\subsection{辐角}
+\begin{definition}[辐角]
+设复数 $z = x + iy$ ($x, y \in \R$)，且 $z \neq 0$。复数 $z$ 的\textbf{辐角}（argument），记作 $\Arg z$，是指从正实轴逆时针旋转到向量 $\overrightarrow{OZ}$ 所经过的角度（以弧度为单位）。
+\end{definition}
+
+\begin{definition}[辐角主值]
+$z$ 的辐角有无数个，其中落在 $(-\pi, \pi]$ 区间内的辐角称为 $z$ 的\textbf{主值}，记作 $\arg z$。则有
+\[\arg z = \Arg z + 2k\pi, \quad k \in \Z\]
+\textbf{注：}$z = 0$ 时，其辐角无定义。
+\end{definition}
+
+\begin{theorem}[辐角主值的计算公式]
+若 $z = x + iy$ ($x, y \in \R$，不同时为零)，则
+\[
+\arg z = 
+\begin{cases}
+\arctan\frac{y}{x}, & x > 0 \\[4pt]
+\arctan\frac{y}{x} + \pi, & x < 0, y \ge 0 \\[4pt]
+\arctan\frac{y}{x} - \pi, & x < 0, y < 0 \\[4pt]
+\frac{\pi}{2}, & x = 0, y > 0 \\[4pt]
+-\frac{\pi}{2}, & x = 0, y < 0
+\end{cases}
+\]
+\end{theorem}
+
+\subsection{方根}
+
+\begin{theorem}[方根公式]
+设 $w = r{\rm e}^{i\theta}$，$r > 0$，$\theta = \arg w$。则 $w$ 的 $n$ 个 $n$ 次方根为：
+\[
+z_k = \sqrt[n]{r} {\rm e}^{i\left(\frac{\theta + 2k\pi}{n}\right)}, \quad k = 0,\,1,\,2,\,\dots,\,n-1
+\]
+这 $n$ 个方根在复平面上位于以原点为中心、半径为 $\sqrt[n]{r}$ 的圆上，构成正 $n$ 边形的顶点。
+\end{theorem}
+
+\begin{definition}[单位根]
+单位 $1$ 的 $n$ 次方根称为 $n$ 次\textbf{单位根}：
+\[
+\varepsilon_k = \cos\frac{2k\pi}{n} + i\sin\frac{2k\pi}{n} = {\rm e}^{\frac{2k\pi i}{n}}, \quad k = 0,\,1,\,2,\,\dots, n-1
+\]
+其中 $\varepsilon_1 = {\rm e}^{\frac{2\pi i}{n}}$ 称为\textbf{本原单位根}，所有单位根均可表示为 $\varepsilon_1$ 的幂。
+\end{definition}
+
+\subsection{共轭复数}
+\begin{definition}[共轭复数]
+设复数 $z = x + iy$ ($x, y \in \R$)，则复数 $\bar{z} = x - iy$ 称为 $z$ 的\textbf{共轭复数}。
+\end{definition}
+
+\begin{theorem}[共轭复数的基本性质]
+设 $z = x + iy$ ($x, y \in \R$)，则：
+\begin{enumerate}[label=\Roman*.]
+    \item $\bar{\bar{z}} = z$
+    \item $z + \bar{z} = 2\Re(z) = 2x$，$z - \bar{z} = 2i\Im(z) = 2iy$
+    \item $z\bar{z} = |z|^2 = x^2 + y^2$
+    \item $|z| = |\bar{z}|$，$\Arg\bar{z} = -\Arg z$（模 $2\pi$ 意义下）
+    \item $z \in \R \iff \bar{z} = z$；$z$ 为纯虚数 $\iff \bar{z} = -z$
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[有理运算的共轭性质]
+设 $z_1, z_2 \in \C$，则
+\begin{tasks}[label-width=1.5em, label=\Roman*.](2)
+    \task $\overline{z_1 + z_2} = \bar{z}_1 + \bar{z}_2$
+    \task $\overline{z_1 - z_2} = \bar{z}_1 - \bar{z}_2$
+    \task $\overline{z_1 z_2} = \bar{z}_1 \bar{z}_2$
+    \task $\overline{\left(\dfrac{z_1}{z_2}\right)} = \dfrac{\bar{z}_1}{\bar{z}_2}$，$z_2 \neq 0$
+
+\end{tasks}
+推广至多项式与有理函数：若 $P(z)$ 为实系数多项式，$R(z)$ 为实系数有理函数，则
+\[
+\overline{P(z)} = P(\bar{z}), \qquad \overline{R(z)} = R(\bar{z}).
+\]
+\end{theorem}
+
+\section{复变函数}
+\begin{definition}[复变函数]
+设 $D \subseteq \C$ 为非空集合，若$\exists f:D\rightarrow \C$，使得 $\forall z \in D$，都有唯一的 $w \in \C$ 与之对应，则称 $w$ 是定义在 $D$ 上的\textbf{复变函数}，记作 $w = f(z)$，$z \in D$。其中 $D$ 称为定义域，$f(D) = \{f(z) \mid z \in D\}$ 称为值域。
+
+令$z=x+iy$，$w=u+iv$，其中 $u, v$ 为定义在 $D$ 上的二元实函数，则有
+\[f(z) = f(x + iy) = u(x,y) + iv(x,y), \quad z \in D\]
+称$u(x,y)$为$f(z)$的\textbf{实部}，$v(x,y)$为$f(z)$的\textbf{虚部}。
+\end{definition}
+
+\begin{example}
+    将定义在 $\R^2\setminus (0,0)$ 上的一对二元实函数
+    \[ u=\frac{2x}{x^2+y^2},\quad v=\frac{y}{x^2+y^2} \]
+    化为一个复变函数
+\end{example}
+\begin{solution}
+    由定义可知，所求复变函数为
+    \[ f(z) = \frac{2x}{x^2+y^2} + i\frac{y}{x^2+y^2} = \frac{2x + iy}{x^2+y^2} = \frac{\frac32z+\frac12\bar{z}}{|z|^2} = \frac{1}{2z}+\frac{1}{2\bar{z}}\]
+\end{solution}
+\ifx\allfiles\undefined
+\end{document}
+\fi

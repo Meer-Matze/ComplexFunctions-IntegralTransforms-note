@@ -1,0 +1,156 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
+\def\path{../config}
+\input{../config/_config}
+\begin{document}
+%\input{../config/cover}
+\else
+\fi
+\chapter{洛朗级数与孤立奇点}
+\section{洛朗级数}
+\begin{definition}[洛朗级数]
+形如
+\[
+\sum_{n=-\infty}^{\infty} c_n (z-z_0)^n \defeq \sum_{n=0}^{\infty} c_n(z-z_0)^n + \sum_{n=1}^{\infty}\frac{c_{-n}}{(z-z_0)^n}
+\]
+的双边幂级数称为\textbf{Laurent 级数}，其中 $z_0\in\C$ 称为\textbf{中心}，$c_n\in\C$ 为系数。
+\end{definition}
+
+\begin{theorem}[Laurent 定理]
+设 $D = \{z\in\C\mid r < \abs{z-z_0} < R\}$（$0\le r<R\le+\infty$）为环形区域，$f$ 在 $D$ 内解析。则 $f$ 在 $D$ 内可唯一展开为
+\[
+f(z) = \sum_{n=-\infty}^{\infty} c_n (z-z_0)^n,\quad z\in D,
+\]
+其中系数
+\[
+c_n = \frac{1}{2\pi i}\oint_\gamma \frac{f(z)}{(z-z_0)^{n+1}}\,\d z,\quad n\in\Z,
+\]
+$\gamma$ 为收敛圆环 $D$ 内任意绕 $z_0$ 的正向逐段光滑闭曲线。
+\end{theorem}
+
+\begin{example}
+    求洛朗级数 $\displaystyle\sum_{n=1}^{\infty}\frac{2^n}{(z-3)^n}+\sum_{n=0}^{\infty}(-1)^n\left(1-\frac{z}{3}\right)^n$ 的收敛环。
+\end{example}
+\begin{solution}
+    由 
+    
+    $\displaystyle\sum_{n=1}^{\infty}\frac{2^n}{(z-3)^n}$ 收敛当且仅当 $\abs{z-3}>2$
+    
+    $\displaystyle\sum_{n=0}^{\infty}(-1)^n\left(1-\frac{z}{3}\right)^n$ 收敛当且仅当 $\abs{1-\frac{z}{3}}<1$，即 $\abs{z-3}<3$
+
+    因此原级数收敛环为 $2<\abs{z-3}<3$。
+\end{solution}
+\begin{example}
+    求 $f(z)=z^2\e^{\frac{1}{z}}$ 在 $z_0=0$ 处的洛朗展开式。
+\end{example}
+\begin{solution}
+    由 $\e^{\frac{1}{z}} = \sum_{n=0}^{\infty}\frac{1}{n!}\left(\frac{1}{z}\right)^n,\;\abs{z}>0$，得
+    \[
+    f(z) = z^2\e^{\frac{1}{z}} = z^2\sum_{n=0}^{\infty}\frac{1}{n!}\left(\frac{1}{z}\right)^n = \sum_{n=0}^{\infty}\frac{1}{n!}z^{2-n}.
+    \]
+    因此，$f(z)$ 在 $z_0=0$ 处的洛朗展开式为
+    \[
+    f(z) = \sum_{n=-2}^{\infty} \frac{1}{(n+2)!}z^n
+    \]
+\end{solution}
+\begin{example}
+    求 $f(z)=\dfrac{1}{(z^2+1)(z-2)}$ 在 $1<\abs{z}<2$ 处以 $z_0=0$ 为中心的洛朗展开式。
+\end{example}
+\begin{solution}
+先分解为部分分式：
+\[
+\frac{1}{(z^2+1)(z-2)}
+= -\frac{1}{5}\frac{z+2}{z^2+1} + \frac{1}{5}\frac{1}{z-2}.
+\]
+
+在 \(1<|z|<2\) 内分别展开：
+
+\begin{itemize}
+    \item 对于 \(\dfrac{1}{z-2}\)，因 \(|z|<2\)，有
+        \[
+        \frac{1}{z-2} = -\frac{1}{2}\cdot \frac{1}{1-\frac{z}{2}}
+        = -\sum_{n=0}^{\infty} \frac{z^n}{2^{n+1}}.
+        \]
+    \item 对于 \(\dfrac{z+2}{z^2+1}\)，因 \(|z|>1\)，有
+        \begin{align*}
+            \frac{z+2}{z^2+1}
+            &= \frac{1}{z}\left(1+\frac{2}{z}\right)\frac{1}{1+\frac{1}{z^2}}\\
+            &= \frac{1}{z}\left(1+\frac{2}{z}\right)\sum_{k=0}^{\infty}(-1)^k z^{-2k}\\
+            &= \sum_{k=0}^{\infty} (-1)^k z^{-2k-1} + 2\sum_{k=0}^{\infty} (-1)^k z^{-2k-2}
+        \end{align*}
+\end{itemize}
+    合并得到
+    \[
+    \boxed{
+    f(z)=\sum_{k=0}^{\infty}\frac{(-1)^{k+1}}{5}z^{-2k-1}
+    +\sum_{k=0}^{\infty}\frac{2(-1)^{k+1}}{5}z^{-2k-2}
+    -\sum_{n=0}^{\infty}\frac{z^n}{5\cdot 2^{n+1}},\quad 1<|z|<2.
+    }
+    \]
+\end{solution}
+\section{孤立奇点}
+
+\subsection{奇点的分类}
+\begin{definition}[孤立奇点]
+设 $f$ 在 $z_0$ 的某去心邻域 $0<\abs{z-z_0}<\delta$ 内解析，但在 $z_0$ 处不解析，则称 $z_0$ 为 $f$ 的\textbf{孤立奇点}。否则称 $z_0$ 为\textbf{非孤立奇点}。
+\end{definition}
+
+\begin{definition}[奇点类型的分类]
+设 $z_0$ 为 $f$ 的孤立奇点，$f$ 在 $0<\abs{z-z_0}<\delta$ 内的 Laurent 展开为
+\[
+f(z) = \sum_{n=-\infty}^{\infty} c_n (z-z_0)^n = \sum_{n=0}^{\infty} c_n(z-z_0)^n + \sum_{n=1}^{\infty}\frac{c_{-n}}{(z-z_0)^n}.
+\]
+称
+\[
+f_1(z) \defeq \sum_{n=0}^{\infty} c_n(z-z_0)^n
+\]
+为 $f$ 在 $z_0$ 处的\textbf{解析部分}（或\textbf{全纯部分}），
+\[
+f_2(z) \defeq \sum_{n=1}^{\infty}\frac{c_{-n}}{(z-z_0)^n}
+\]
+为 $f$ 在 $z_0$ 处的\textbf{主要部分}（或\textbf{奇异部分}）。按主要部分分类：
+\begin{enumerate}
+    \item 若 $f_2\equiv 0$（即所有 $c_{-n}=0$，$n\ge 1$），则称 $z_0$ 为 $f$ 的\textbf{可去奇点}；
+    \item 若 $f_2$ 仅含有限项，设最高负幂项为 $\dfrac{c_{-m}}{(z-z_0)^m}$，$c_{-m}\neq 0$，$m\ge 1$，则称 $z_0$ 为 $f$ 的\textbf{$m$ 阶极点}；特别地 $m=1$ 时称\textbf{单极点}（或\textbf{简单极点}）；
+    \item 若 $f_2$ 含无穷多项，则称 $z_0$ 为 $f$ 的\textbf{本性奇点}。
+\end{enumerate}
+\end{definition}
+
+\subsection{奇点的判定}
+
+\begin{theorem}[可去奇点的判别法]
+设 $z_0$ 为 $f$ 的孤立奇点。下列命题等价：
+\begin{enumerate}
+    \item $z_0$ 为 $f$ 的可去奇点；
+    \item $\displaystyle\lim_{z\to z_0} f(z)$ 存在（有限）；
+    \item $f$ 在 $z_0$ 的某去心邻域内有界；
+    \item Laurent 展开中所有负幂项系数均为零。
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[极点的判别法]
+设 $z_0$ 为 $f$ 的孤立奇点。下列命题等价：
+\begin{enumerate}
+    \item $z_0$ 为 $f$ 的 $m$ 阶极点；
+    \item $\displaystyle\lim_{z\to z_0} (z-z_0)^m f(z) = A\neq 0$（有限非零）；
+    \item $\displaystyle\lim_{z\to z_0} f(z) = \infty$；
+    \item $g(z)\defeq \dfrac{1}{f(z)}$ 以 $z_0$ 为 $m$ 阶零点（即可去奇点，且 $g^{(m)}(z_0)\neq 0$）。
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[本性奇点的判别法]
+设 $z_0$ 为 $f$ 的孤立奇点。下列命题等价：
+\begin{enumerate}
+    \item $z_0$ 为 $f$ 的本性奇点；
+    \item Laurent 展开中负幂项系数有无穷多个不为零；
+    \item $\displaystyle\lim_{z\to z_0} f(z)$ 不存在且不为 $\infty$。
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Picard 定理]
+若 $z_0$ 为 $f$ 的本性奇点，则在 $z_0$ 的任意邻域内，$f$ 取到 $\C$ 中至多一个例外值的所有复数值。
+\end{theorem}
+
+\ifx\allfiles\undefined
+\end{document}
+\fi

@@ -1,0 +1,139 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
+\def\path{../config}
+\input{../config/_config}
+\begin{document}
+%\input{../config/cover}
+\else
+\fi
+\chapter{幂级数}
+
+\section{复数项级数}
+
+\subsection{级数的定义}
+\begin{definition}[复数项级数]
+设 $\{a_n\}_{n=1}^{\infty}\subseteq\C$。称形式和
+\[
+\sum_{n=1}^{\infty} a_n \defeq a_1 + a_2 + \cdots + a_n + \cdots
+\]
+为\textbf{复数项级数}（简称为\textbf{级数}），称 $S_n \defeq \displaystyle\sum_{k=1}^{n} a_k$ 为其\textbf{部分和}，$\{S_n\}$ 称为\textbf{部分和序列}。
+\end{definition}
+
+\begin{definition}[级数的收敛与和]
+若部分和序列 $\{S_n\}$ 收敛（极限存在且有限），则称级数 $\displaystyle\sum_{n=1}^{\infty} a_n$ \textbf{收敛}，并称其极限 $S \defeq \displaystyle\lim_{n\to\infty} S_n$ 为该级数的\textbf{和}，记作
+\[
+\sum_{n=1}^{\infty} a_n = S.
+\]
+否则称级数\textbf{发散}。
+\end{definition}
+
+\begin{definition}[绝对收敛与条件收敛]
+若级数 $\displaystyle\sum_{n=1}^{\infty} \abs{a_n}$ 收敛，则称原级数 $\displaystyle\sum_{n=1}^{\infty} a_n$ \textbf{绝对收敛}。
+
+若级数 $\displaystyle\sum_{n=1}^{\infty} a_n$ 收敛，但 $\displaystyle\sum_{n=1}^{\infty} \abs{a_n}$ 发散，则称原级数\textbf{条件收敛}。
+\end{definition}
+
+\begin{theorem}
+    复数数列 $\{z_n\},\;z_n=x_n+iy_n$ 收敛当且仅当实数数列 $\{x_n\}$ 与 $\{y_n\}$ 均收敛。
+
+    复数级数 $\displaystyle\sum_{n=1}^{\infty} z_n$ 收敛当且仅当实数级数 $\displaystyle\sum_{n=1}^{\infty} x_n$ 与 $\displaystyle\sum_{n=1}^{\infty} y_n$ 均收敛。
+\end{theorem}
+\begin{example}
+    判断下列级数的敛散性：
+    \begin{tasks}[label-width=1.5em, label=(\arabic*)](2)
+        \task $\displaystyle\sum_{n=1}^{\infty}\left(\frac{1}{1+i}\right)^{n-1}$
+        \task $\displaystyle\sum_{n=2}^{\infty}\frac{i^n}{\ln n}$
+    \end{tasks}
+\end{example}
+\begin{solution}
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\displaystyle\sum_{n=1}^{\infty}\left(\frac{1}{1+i}\right)^{n-1} = \sum_{n=1}^{\infty}\left(\frac{1-i}{2}\right)^{n-1}$，为等比级数，公比 $\abs{\frac{1-i}{2}} = \frac{\sqrt{2}}{2} < 1$，故收敛。
+        \item $\displaystyle\sum_{n=2}^{\infty}\frac{i^n}{\ln n} = \sum_{n=2}^{\infty}\frac{\cos\frac{n\pi}{2}+i\sin\frac{n\pi}{2}}{\ln n}$，实部为 $\displaystyle\sum_{k=1}^{\infty}\frac{(-1)^k}{\ln(2k)}$，虚部为 $\displaystyle\sum_{k=1}^{\infty}\frac{(-1)^k}{\ln(2k+1)}$。
+        
+        两者均为交错级数，且 $\displaystyle\lim_{k\to\infty}\frac{1}{\ln(2k)} = \lim_{k\to\infty}\frac{1}{\ln(2k+1)} = 0$，故原级数收敛。
+        
+        又$\displaystyle\sum_{n=2}^{\infty}\frac{\abs{i^n}}{\ln n} = \sum_{n=2}^{\infty}\frac{1}{\ln n}$ 发散，故原级数条件收敛。
+    \end{enumerate}
+\end{solution}
+\section{幂级数}
+\subsection{收敛半径}
+\begin{definition}[幂级数]
+形如
+\[
+\sum_{n=0}^{\infty} c_n (z-z_0)^n \defeq c_0 + c_1(z-z_0) + c_2(z-z_0)^2 + \cdots
+\]
+的级数称为\textbf{幂级数}，其中 $c_n\in\C$ 称为\textbf{系数}，$z_0\in\C$ 称为\textbf{中心}。
+\end{definition}
+
+\begin{theorem}[收敛半径的计算公式]
+    设
+    \[\rho = \lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}} \quad\text{或}\quad \rho = \lim_{n\to\infty}\sqrt[n]{\abs{c_n}}\]
+
+    则
+    \[
+    R = \frac{1}{\rho}\quad(\rho=0\Rightarrow R=+\infty,\ \rho=+\infty\Rightarrow R=0).
+    \]
+\end{theorem}
+\begin{example}
+    求 $\displaystyle\sum_{n=1}^{\infty}\frac{z^n}{n^3}$ 的收敛半径与收敛域。
+\end{example}
+\begin{solution}
+    由 $\displaystyle\lim_{n\to\infty}\sqrt[n]{\frac{1}{n^3}} = 1$，得收敛半径 $R=1$。
+
+    当 $\abs{z}=1$ 时，$\displaystyle\sum_{n=1}^{\infty}\frac{\abs{z}^n}{n^3} = \sum_{n=1}^{\infty}\frac{1}{n^3}$ 收敛，故原级数绝对收敛。
+
+    因此收敛域为 $\abs{z}\le 1$。
+\end{solution}
+\subsection{幂级数展开与和函数}
+\begin{example}
+    将 $f(z)=\dfrac{1}{z^3+z^2-z-1}$ 在 $z_0=0$ 处展开为幂级数。
+\end{example}
+\begin{solution}
+    部分分式：
+    \[f(z)=\frac1{(z-1)(z+1)^2}=\frac1{(z-1)(z+1)^2}=\frac14\frac1{z-1}-\frac14\frac1{z+1}-\frac12\frac1{(z+1)^2}.\]
+
+    在 \(|z|<1\) 内展开：
+    \[\frac1{z-1}=-\frac1{1-z}=-\sum_{n=0}^\infty z^n,\]
+    \[
+    \frac1{z+1}=\sum_{n=0}^\infty (-1)^n z^n,
+    \]
+    \[
+    \frac1{(z+1)^2}=\sum_{n=0}^\infty (-1)^n(n+1)z^n.
+    \]
+
+    因此
+    \begin{align*}
+    f(z)
+    &=\frac14\left(-\sum_{n=0}^\infty z^n\right)
+    -\frac14\sum_{n=0}^\infty (-1)^n z^n
+    -\frac12\sum_{n=0}^\infty (-1)^n(n+1)z^n \\
+    &=\sum_{n=0}^\infty \left[-\frac14-\frac{(-1)^n}{4}-\frac{(-1)^n(n+1)}2\right]z^n \\
+    &=\sum_{n=0}^\infty -\frac{1+(-1)^n(2n+3)}4\, z^n.
+    \end{align*}
+
+\end{solution}
+\section{泰勒级数}
+\subsection{定义}
+\begin{theorem}[Taylor 定理]
+设 $f$ 在圆盘 $B(z_0,R)$ 内解析，则 $f$ 在 $B(z_0,R)$ 内可展开为
+\[
+f(z) = \sum_{n=0}^{\infty}\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n,\quad z\in B(z_0,R).
+\]
+右端称为 $f$ 在 $z_0$ 处的\textbf{Taylor 级数}且展开式唯一，系数
+\[
+c_n = \frac{f^{(n)}(z_0)}{n!} = \frac{1}{2\pi i}\oint_{\partial B(z_0,r)}\frac{f(z)}{(z-z_0)^{n+1}}\,\d z,\quad n=0,1,2,\dots
+\]
+称为\textbf{Taylor 系数}。当 $z_0=0$ 时亦称\textbf{Maclaurin 级数}。
+\end{theorem}
+\subsection{多值函数的泰勒展开}
+单值函数的泰勒展开方法与一般的实数域的泰勒展开一致，而对于多值函数，则需要先选定一个分支（即在某个区域内选定一个单值解析函数），然后再进行泰勒展开。一般选取主值分支（取$\arg$），进行展开。
+\begin{theorem}
+    下面给出 $\Log(1+z)$ 和 $(1+z)^\alpha$ 在主值分支下的泰勒展开式：
+    \begin{enumerate}
+        \item $\displaystyle\Log(1+z) \xlongequal{\text{主值}} z - \frac{z^2}{2} + \frac{z^3}{3} - \frac{z^4}{4} + \cdots = \sum_{n=1}^{\infty}(-1)^{n-1}\frac{z^n}{n},\quad \abs{z}<1$
+        \item $\displaystyle (1+z)^\alpha \xlongequal{\text{主值}} 1 + \alpha z + \frac{\alpha(\alpha-1)}{2!}z^2 + \frac{\alpha(\alpha-1)(\alpha-2)}{3!}z^3 + \cdots = \sum_{n=0}^{\infty}\binom{\alpha}{n} z^n,\quad \abs{z}<1$
+    \end{enumerate}
+\end{theorem}
+\ifx\allfiles\undefined
+\end{document}
+\fi

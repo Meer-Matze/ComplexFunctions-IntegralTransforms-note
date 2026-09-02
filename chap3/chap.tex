@@ -1,0 +1,135 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
+\def\path{../config}
+\input{../config/_config}
+\begin{document}
+%\input{../config/cover}
+\else
+\fi
+\chapter{复积分}
+
+\section{复积分}
+
+\begin{definition}[逐段光滑曲线]
+设 $\gamma\colon [a,b]\to\C$，$\gamma(t)=x(t)+iy(t)$。若 $x(t),y(t)$ 在 $[a,b]$ 上连续且除有限个点外在 $[a,b]$ 上连续可微，则称 $\gamma$ 为\textbf{逐段光滑曲线}。
+\end{definition}
+
+\begin{definition}[复积分]
+设 $\gamma\colon [a,b]\to\C$ 为逐段光滑曲线，$f$ 在 $\gamma$ 上有界。若极限
+\[
+\int_\gamma f(z)\,\d z \defeq \lim_{n\to\infty}\sum_{k=1}^{n}f(\zeta_k)(z_k-z_{k-1})
+\]
+存在（与分割 $\{z_k\}$ 及介点 $\{\zeta_k\}$ 的选取无关），则称 $f$ 沿 $\gamma$\textbf{可积}，称该极限为 $f$ 沿 $\gamma$ 的\textbf{复积分}（或\textbf{第一型复积分}）。
+\end{definition}
+
+\begin{theorem}[复积分的等价形式]
+设 $f(z)=u(x,y)+iv(x,y)$，$\gamma$ 逐段光滑。则 $f$ 沿 $\gamma$ 可积当且仅当 $u,v$ 沿 $\gamma$ 可积，且
+\[
+\int_\gamma f(z)\,\d z = \int_\gamma u\,\d x - v\,\d y + i\int_\gamma v\,\d x + u\,\d y.
+\]
+\end{theorem}
+
+\begin{theorem}[积分基本性质]
+设 $f,g$ 沿逐段光滑曲线 $\gamma$ 可积，$\alpha,\beta\in\C$，则
+\begin{enumerate}
+    \item 线性性：$\displaystyle\int_\gamma (\alpha f + \beta g)\,\d z = \alpha\int_\gamma f\,\d z + \beta\int_\gamma g\,\d z$；
+    \item 可加性：若 $\gamma=\gamma_1+\gamma_2$，则 $\displaystyle\int_\gamma f\,\d z = \int_{\gamma_1}f\,\d z + \int_{\gamma_2}f\,\d z$；
+    \item 反向性：$\displaystyle\int_{\gamma^-} f\,\d z = -\int_\gamma f\,\d z$，其中 $\gamma^-$ 表示 $\gamma$ 的反向曲线；
+    \item 绝对值估计：$\displaystyle\abs{\int_\gamma f\,\d z} \le \max_{z\in\gamma}\abs{f(z)}\cdot \int_{\gamma} \abs{\gamma'(t)}\,\d t$；
+    \item 共轭：$\displaystyle\overline{\int_\gamma f\,\d z} = \int_\gamma \overline{f(z)}\,\d\bar z$。
+\end{enumerate}
+\end{theorem}
+
+\begin{example}
+    求积分 $\displaystyle\int_C\frac{\d z}{(z-z_0)^n},\;n\in \N$，其中 $C$ 为以 $z_0$ 为圆心、半径为 $R>0$ 的圆，取逆时针方向。
+\end{example}
+\begin{solution}
+
+    设 $z = z_0 + Re^{i\theta}$，则 $\d z = iRe^{i\theta}\d\theta$，$\theta\in[0,2\pi]$。于是
+    \[
+    \int_C\frac{\d z}{(z-z_0)^n} = \int_0^{2\pi}\frac{iRe^{i\theta}\d\theta}{(Re^{i\theta})^n} = iR^{1-n}\int_0^{2\pi}e^{i(1-n)\theta}\d\theta.
+    \]
+    \begin{enumerate}
+        \item 当 $n=1$ 时，$\displaystyle\int_0^{2\pi}e^{i(1-n)\theta}\d\theta = \int_0^{2\pi}\d\theta = 2\pi$
+        \item 当 $n>1$ 时，$\displaystyle\int_0^{2\pi}e^{i(1-n)\theta}\d\theta = \left[\frac{e^{i(1-n)\theta}}{i(1-n)}\right]_0^{2\pi} = 0$
+    \end{enumerate}
+
+    因此
+    \[
+    \int_C\frac{\d z}{(z-z_0)^n} =
+    \begin{cases}
+        2\pi i, & n=1\\
+        0, & n>1.
+    \end{cases}
+    \]
+\end{solution}
+\section{柯西积分定理}
+
+\begin{theorem}[Cauchy--Goursat 定理]
+设 $D\subseteq\C$ 为单连通开集，$f$ 在 $D$ 内解析。则对 $D$ 内任意逐段光滑\textbf{闭曲线} $\gamma$（即 $\gamma(a)=\gamma(b)$），
+\[
+\oint_\gamma f(z)\,\d z = 0.
+\]
+\end{theorem}
+
+\begin{theorem}[Cauchy 积分公式]
+设 $D$ 为有界闭域，其边界 $\partial D$ 为逐段光滑正向闭曲线。$f$ 在 $D$ 内解析，在 $\partial D$ 上连续。则对任意 $z_0\in D$，
+\[
+f(z_0) = \frac{1}{2\pi i}\oint_{\partial D}\frac{f(z)}{z-z_0}\,\d z.
+\]
+\end{theorem}
+
+\begin{theorem}[Cauchy 积分公式的推广]
+在上述条件下，若在 $z_0$ 处 $f$ 有任意阶导数，则 $\forall n\in\N$，
+\[
+f^{(n)}(z_0) = \frac{n!}{2\pi i}\oint_{\partial D}\frac{f(z)}{(z-z_0)^{n+1}}\,\d z.
+\]
+\end{theorem}
+\begin{example}
+    利用积分 $\displaystyle\oint_{\abs{z}=1}\frac{\e^z}{z}\,\d z$，计算实积分
+    \[\int_0^{2\pi}\e^{\cos\theta}\sin(\sin\theta)\,\d \theta,\qquad\int_0^{2\pi}\e^{\cos\theta}\cos(\sin\theta)\,\d \theta\]
+\end{example}
+\begin{solution}
+    
+    设 $z = e^{i\theta}$，则 $\d z = i e^{i\theta}\d\theta$，$\theta\in[0,2\pi]$。于是
+    \[
+    \oint_{\abs{z}=1}\frac{\e^z}{z}\,\d z = \int_0^{2\pi}\frac{\e^{e^{i\theta}}}{e^{i\theta}} i e^{i\theta}\d\theta = i\int_0^{2\pi}\e^{e^{i\theta}}\d\theta.
+    \]
+    由 Cauchy 积分公式可知
+    \[
+    \oint_{\abs{z}=1}\frac{\e^z}{z}\,\d z = 2\pi i\e^0 = 2\pi i.
+    \]
+    因此
+    \[
+    \int_0^{2\pi}\e^{e^{i\theta}}\d\theta = 2\pi.
+    \]
+    又有
+    \[
+    \int_0^{2\pi}\e^{e^{i\theta}}\d\theta = \int_0^{2\pi}\e^{\cos\theta}[\cos(\sin\theta)+i\sin(\sin\theta)]\,\d \theta.
+    \]
+    对比实部与虚部，得
+    \[
+    \int_0^{2\pi}\e^{\cos\theta}\cos(\sin\theta)\,\d \theta = 2\pi,\qquad
+    \int_0^{2\pi}\e^{\cos\theta}\sin(\sin\theta)\,\d \theta = 0.
+    \]
+\end{solution}
+\begin{example}
+    计算积分 $\displaystyle\oint_C\frac{\e^{-z}\sin z}{z^2}\,\d z$，其中 $C:\abs{z-i}=2$
+\end{example}
+\begin{solution}
+    由 Cauchy 积分公式的推广可知
+    \[
+    \oint_C\frac{\e^{-z}\sin z}{z^2}\,\d z = 2\pi i f'(0),
+    \]
+    其中 $f(z) = \e^{-z}\sin z$。于是
+    \[
+    f'(z) = -\e^{-z}\sin z + \e^{-z}\cos z = \e^{-z}(\cos z - \sin z),
+    \]
+    因此$f'(0) = 1$，从而
+    \[
+    \oint_C\frac{\e^{-z}\sin z}{z^2}\,\d z = 2\pi i.
+    \]
+\end{solution}
+\ifx\allfiles\undefined
+\end{document}
+\fi

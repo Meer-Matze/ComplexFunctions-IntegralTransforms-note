@@ -1,0 +1,238 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
+\def\path{../config}
+\input{../config/_config}
+\begin{document}
+%\input{../config/cover}
+\else
+\fi
+\chapter{留数及其应用}
+
+\section{留数}
+
+\subsection{有限点留数的定义及留数定理}
+
+\begin{definition}[有限点留数]
+设 $z_0$ 为 $f$ 的孤立奇点，$\gamma$ 为绕 $z_0$ 的充分小正向闭曲线。称
+\[
+\Res(f,z_0) \defeq \frac{1}{2\pi i}\oint_\gamma f(z)\,\d z = c_{-1}
+\]
+为 $f$ 在 $z_0$ 处的\textbf{留数}（residue），其中 $c_{-1}$ 为 $f$ 在 $z_0$ 处 Laurent 展开中 $(z-z_0)^{-1}$ 项的系数。
+\end{definition}
+
+\begin{theorem}[留数定理]
+设 $D$ 为有界闭域，$\partial D$ 为逐段光滑正向闭曲线。$f$ 在 $D$ 内除有限个孤立奇点 $z_1,z_2,\dots,z_n$ 外处处解析，在 $\partial D$ 上连续。则
+\[
+\oint_{\partial D} f(z)\,\d z = 2\pi i\sum_{k=1}^{n}\Res(f,z_k).
+\]
+\end{theorem}
+
+\begin{theorem}[复合闭路留数定理]
+设 $D$ 为多连通区域，$\partial D = \Gamma_0 + \Gamma_1 + \cdots + \Gamma_n$（取区域正向），$f$ 在 $D$ 内除 $\Gamma_k$ 内部的孤立奇点 $z_{k,1},\dots,z_{k,m_k}$ 外处处解析，则
+\[
+\oint_{\partial D} f(z)\,\d z = 2\pi i\sum_{k=0}^{n}\sum_{j=1}^{m_k}\Res(f,z_{k,j}).
+\]
+\end{theorem}
+
+\subsection{有限点留数的求法}
+
+\begin{theorem}[利用 Laurent 展开]
+设 $z_0$ 为 $f$ 的孤立奇点。若能求出 $f$ 在 $z_0$ 处的 Laurent 展开
+\[
+f(z) = \sum_{n=-\infty}^{\infty} c_n (z-z_0)^n,
+\]
+则 $\Res(f,z_0) = c_{-1}$
+\end{theorem}
+
+\begin{corollary}[可去奇点的留数]
+若 $z_0$ 为 $f$ 的可去奇点，则
+\[
+\Res(f,z_0) = 0.
+\]
+\end{corollary}
+
+\begin{theorem}[极点的留数公式]
+
+   设 $z_0$ 为 $f$ 的 $n$ 阶极点
+    \[
+    f(z)=\frac{\varphi(z)}{(z-z_0)^n}
+    \]
+    其中 $\varphi(z)$ 在 $z_0$ 处解析，$\varphi(z_0)\neq 0$。则
+    \[
+    \Res(f,z_0) = \frac{1}{(n-1)!}\lim_{z\to z_0}\frac{\d^{n-1}}{\d z^{n-1}}\bigl[(z-z_0)^n f(z)\bigr] = \frac{1}{(n-1)!}\lim_{z\to z_0}\frac{\d^{n-1}}{\d z^{n-1}}\varphi(z)
+    \]
+    下面给出几种常用的特殊情况：\begin{enumerate}
+        \item 若 $z_0$ 为 $f$ 的单极点，则
+            \[
+            \Res(f,z_0) = \lim_{z\to z_0} (z-z_0) f(z).
+            \]
+        \item 若 $z_0$ 为 $f$ 的 $2$ 阶极点，则
+            \[
+            \Res(f,z_0) = \lim_{z\to z_0} \frac{\d}{\d z}\bigl[(z-z_0)^2 f(z)\bigr]
+            \]
+        \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[商的留数公式]
+    若 $z_0$ 为 $f(z)=\dfrac{\varphi(z)}{\psi(z)}$ 的单极点，其中 $\varphi(z),\,\psi(z)$ 在 $z_0$ 处解析，且 $\varphi(z_0)\neq 0,\;\psi(z_0)=0,\;\psi'(z_0)\neq 0$，则
+            \[
+            \Res(f,z_0) = \frac{\varphi(z_0)}{\psi'(z_0)}.
+            \]
+\end{theorem}
+
+\begin{example}
+计算下列积分
+\begin{tasks}[label-width=1.5em, label=(\arabic*)](2)
+    \task $\displaystyle\oint_{\abs{z}=\frac{1}{3}}\sin\frac{2}{z}\,\d z$
+    \task $\displaystyle\oint_{\abs{z}=\frac12}\frac{\sin z}{z^2(1-\e^z)}\,\d z$
+\end{tasks}
+\begin{solution}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 由 $$\sin\frac{2}{z} = \sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)!}\left(\frac{2}{z}\right)^{2n+1} = \frac{2}{z}-\frac{4}{3!z^3}+\frac{16}{5!z^5}-\cdots$$得 $\Res(f,0) = 2$，从而
+        \[\oint_{\abs{z}=\frac{1}{3}}\sin\frac{2}{z}\,\d z = 2\pi i \Res(f,0) = 4\pi i\]
+        \item \[\Res(f,0)=\lim_{z\to 0}\frac{\d}{\d z}\left(z^2 \cdot \frac{\sin z}{z^2(1-\e^z)}\right)=\lim_{z\to 0}\frac{(1-\e^z)\cos z+\e^z\sin z}{(1-\e^z)^2}=\frac12\]
+        于是
+        \[\oint_{\abs{z}=\frac12}\frac{\sin z}{z^2(1-\e^z)}\,\d z = 2\pi i \Res(f,0) = \pi i\]
+    \end{enumerate}
+\end{solution}
+
+\end{example}
+
+
+\section{无穷远点的留数}
+
+\begin{definition}[无穷远点留数]
+设 $f$ 以 $\infty$ 为孤立奇点。称
+\[
+\Res(f,\infty) \defeq \frac{1}{2\pi i}\oint_{\gamma^-} f(z)\,\d z = -\Res\!\left(\frac{1}{z^2}f\!\left(\frac{1}{z}\right),0\right)
+\]
+为 $f$ 在 $\infty$ 处的\textbf{留数}，其中 $\gamma^-$ 表示沿 $\gamma$ 的反方向（即顺时针方向）。
+\end{definition}
+
+\begin{theorem}[Laurent 展开等价形式]
+设 $f$ 在 $\abs{z}>R$ 内解析。则在 $\infty$ 附近
+\[
+f(z) = \sum_{n=-\infty}^{\infty} c_n z^n,
+\]
+且
+\[
+\Res(f,\infty) = -c_{-1}
+\]
+\end{theorem}
+
+\begin{theorem}[与有限点留数的关系]
+    若函数 $f$ 在扩充复平面上除有限个孤立奇点 $z_1,z_2,\dots,z_n$ 及 $\infty$ 外处处解析，则
+    \[\Res(f,\infty) + \sum_{k=1}^{n}\Res(f,z_k) = 0\]
+\end{theorem}
+
+\begin{example}
+    求积分$\displaystyle\oint_{\abs{z}=2}\frac{z^5}{1+z^6}\,\d z$
+\end{example}
+\begin{solution}
+    由 $\displaystyle\frac{z^5}{1+z^6} = \frac{1}{z(1+z^{-6})} = \frac{1}{z}-\frac{1}{z^7}+\frac{1}{z^{13}}-\cdots$，得 $\Res(f,\infty)=-1$。由留数定理
+    \[
+    \oint_{\abs{z}=2}\frac{z^5}{1+z^6}\,\d z = -2\pi i \Res(f,\infty) = 2\pi i.
+    \]
+\end{solution}
+
+\section{留数定理计算实积分}
+
+\subsection{$\displaystyle\int_0^{2\pi} R(\cos\theta,\sin\theta)\,\d\theta$ 型积分}
+
+\begin{theorem}[三角有理积分]
+设 $R(u,v)$ 为二元有理函数，$R(\cos\theta,\sin\theta)$ 在 $\theta\in[0,2\pi]$ 上无奇点。设
+\[F(z)=\frac{1}{iz}R\left(\frac{z+z^{-1}}{2},\frac{z-z^{-1}}{2i}\right)\]
+则
+\[
+\int_0^{2\pi} R(\cos\theta,\sin\theta)\,\d\theta =\oint_{\abs{z}=1} F(z)\,\d z = 2\pi i\sum_{k=1}^{n}\Res\!\left(F(z),z_k\right),
+\]
+其中 $z_k$ 为 $F(z)$ 在 $\abs{z}<1$ 内的全部极点。
+\end{theorem}
+
+\begin{example}
+计算 $\displaystyle I = \int_0^{2\pi}\frac{\d\theta}{1-2p\cos\theta + p^2}$，$\abs{p}<1$。
+\end{example}
+\begin{solution}
+令 $z = \e^{i\theta}$，则 $\cos\theta = \dfrac{1}{2}\!\left(z+\dfrac{1}{z}\right)$，$\d\theta = \dfrac{\d z}{iz}$。
+\[
+I = \oint_{\abs{z}=1}\frac{1}{iz}\cdot \frac{1}{1-p\!\left(z+\frac{1}{z}\right)+p^2}\,\d z
+\]
+化为
+\[
+I = \oint_{\abs{z}=1}\frac{\d z}{i(1-pz)(z-p)}.
+\]
+$\abs{p}<1$ 时单位圆内仅有单极点 $z=p$。
+\[
+\Res\!\left(\frac{1}{i(1-pz)(z-p)},p\right) = \frac{1}{i(1-p^2)}.
+\]
+故
+\[
+I = 2\pi i \cdot \frac{1}{i(1-p^2)} = \frac{2\pi}{1-p^2}.
+\]
+\end{solution}
+
+\begin{example}
+    计算 $I=\displaystyle\int_0^{2\pi}\frac{\sin^2\theta}{a+b\cos\theta}\,\d\theta$，其中 $a>b>0$。
+\end{example}
+\begin{solution}
+    设 $z = \e^{i\theta}$，则 $\sin^2\theta = \dfrac{1}{4}\!\left(z-\dfrac{1}{z}\right)^2$，$\cos\theta = \dfrac{1}{2}\!\left(z+\dfrac{1}{z}\right)$，$\d\theta = \dfrac{\d z}{iz}$。
+    \begin{align*}
+        I &= \oint_{\abs{z}=1}\frac{1}{iz}\cdot \frac{-\frac{1}{4}\left(z-\frac{1}{z}\right)^2}{a+b\cdot\frac{1}{2}\left(z+\frac{1}{z}\right)}\,\d z
+        = \oint_{\abs{z}=1}\frac{(z^2-1)^2}{-2biz^2(z^2+\frac{2a}{b}z+1)}\,\d z\\
+        &= \frac{i}{2b}\oint_{\abs{z}=1}\frac{(z^2-1)^2}{z^2(z^2+\frac{2a}{b}z+1)}\,\d z = \frac{i}{2b}\oint_{\abs{z}=1}F(z)\,\d z
+    \end{align*}
+    在 $\abs{z}<1$ 内有两个极点，$z=0$（2 阶）和 $z_1=-\dfrac{-a+\sqrt{a^2-b^2}}{b}$（单极点）。
+    \[\Res(F, 0)=\lim_{z\to 0}\frac{\d}{\d z}\bigl[z^2F(z)\bigr]=-\frac{2a}{b}\]
+    \[\Res\left(F, \frac{-a+\sqrt{a^2-b^2}}{b}\right)=\lim_{z\to z_1}(z-z_1)F(z)=\frac{2\sqrt{a^2-b^2}}{b}\]
+    于是
+    \[I = \frac{i}{2b}\cdot 2\pi i\left(-\frac{2a}{b} + \frac{2\sqrt{a^2-b^2}}{b}\right) = \frac{2\pi}{b^2}\left(a-\sqrt{a^2-b^2}\right)\]
+\end{solution}
+
+\subsection{$\displaystyle\int_{-\infty}^{+\infty} \frac{P(x)}{Q(x)}\,\d x$ 型积分}
+
+\begin{theorem}[有理函数的无穷积分]
+设 $f(x) = \dfrac{P(x)}{Q(x)}$ 为最简有理分式，$Q(x)$ 的次数至少比 $P(x)$ 高两次，且 $Q$ 在实轴上无零点。则
+\[
+\int_{-\infty}^{+\infty} f(x)\,\d x = 2\pi i\sum_{\Im z_k>0}\Res(f,z_k),
+\]
+其中求和遍历 $f(z)$ 在上半平面 $\Im z>0$ 内的全部极点。
+\end{theorem}
+
+\begin{example}
+    计算 $\displaystyle I_n = \int_{0}^{+\infty}\frac{\d x}{(1+x^2)^{n+1}},\; n \in \mathbb{N}$
+\end{example}
+\begin{solution}
+    注意到 $z=i$ 为 $f(z)=\dfrac{1}{(1+z^2)^{n+1}}$ 的 $(n+1)$ 阶极点。由留数公式
+    \begin{align*}
+        \Res(f,i) &= \frac{1}{n!}\lim_{z\to i}\frac{\d^n}{\d z^n}\frac{(z-i)^{n+1}}{(1+z^2)^{n+1}} = \frac{1}{n!}\lim_{z\to i}\frac{\d^n}{\d z^n}\frac{1}{(z+i)^{n+1}}\\[1.2em]
+        &= \frac{1}{n!}\lim_{z\to i}\frac{(-1)^n(2n)!}{n!(z+i)^{2n+1}} = \frac{(2n)!}{i2^{2n+1}(n!)^2}
+    \end{align*}
+    因此
+    \[I_n=\frac12\int_{-\infty}^{+\infty}\frac{\d x}{(1+x^2)^{n+1}} = \frac12 \cdot 2\pi i \cdot \frac{(2n)!}{i2^{2n+1}(n!)^2} = \frac{\pi}{2}\cdot\frac{(2n-1)!!}{(2n)!!}\]
+\end{solution}
+
+\subsection{$\displaystyle\int_{-\infty}^{+\infty} \frac{P(x)}{Q(x)}\e^{iax}\,\d x$ 型积分（$a>0$）}
+
+\begin{theorem}
+设 $g(z) = \dfrac{P(z)}{Q(z)}$ 为最简有理分式，$Q(z)$ 的次数比 $P(z)$ 的次数高，且$Q$在实轴上无零点，则
+\[\int_{-\infty}^{+\infty} g(x)\e^{iax}\,\d x = 2\pi i\sum_{\Im z_k>0}\Res(g,z_k),\quad a>0\]
+其中求和遍历 $g(z)$ 在上半平面 $\Im z>0$ 内的全部极点。
+\end{theorem}
+
+\begin{example}
+计算 $\displaystyle I = \int_{-\infty}^{+\infty}\frac{\cos ax}{x^2+1}\,\d x,\quad a>0$
+\end{example}
+\begin{solution}
+考虑 $I_1 = \displaystyle\int_{-\infty}^{+\infty}\frac{\e^{iax}}{x^2+1}\,\d x,\quad a>0$
+\[
+I_1 = 2\pi i \Res\!\left(\frac{\e^{iaz}}{z^2+1},i\right) = 2\pi i \cdot \frac{\e^{-a}}{2i} = \pi\e^{-a}.
+\]
+由 $I_1 = \displaystyle\int_{-\infty}^{+\infty}\frac{\cos ax}{x^2+1}\,\d x + i\int_{-\infty}^{+\infty}\frac{\sin ax}{x^2+1}\,\d x$，且奇函数积分为零，故
+\[
+I = \pi\e^{-a}
+\]
+\end{solution}
+
+\ifx\allfiles\undefined
+\end{document}
+\fi

@@ -147,8 +147,12 @@ f_2(z) \defeq \sum_{n=1}^{\infty}\frac{c_{-n}}{(z-z_0)^n}
 \end{enumerate}
 \end{theorem}
 
-\begin{theorem}[Picard 定理]
-若 $z_0$ 为 $f$ 的本性奇点，则在 $z_0$ 的任意邻域内，$f$ 取到 $\C$ 中至多一个例外值的所有复数值。
+\section{无穷远点}
+\begin{definition}[无穷远点为孤立奇点]
+    若函数 $f(z)$ 在 $z=\infty$ 的某去心邻域 $\{z\in\C\mid \abs{z}>R\}$ 内解析，则称 $f$ 以 $z=\infty$ 为孤立奇点。
+\end{definition}
+\begin{theorem}[无穷远点的奇点类型]
+    设点 $\infty$ 为 $f$ 的孤立奇点，利用倒代换 $w = \frac{1}{z}$，将 $\infty$ 映为 $0$，于是 $g(w)=f(w^{-1})$ 在 $w=0$ 处有孤立奇点。则 $\infty$ 的奇点类型与 $0$ 的奇点类型相同。
 \end{theorem}
 
 \ifx\allfiles\undefined

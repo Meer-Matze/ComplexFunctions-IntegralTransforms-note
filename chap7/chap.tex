@@ -1,0 +1,176 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
+\def\path{../config}
+\input{../config/_config}
+\begin{document}
+%\input{../config/cover}
+\else
+\fi
+\chapter{傅里叶变换}
+
+\section{傅里叶积分与傅里叶变换}
+
+\subsection{傅里叶积分定理}
+
+\begin{theorem}[傅里叶积分定理]
+设 $f\colon\R\to\C$ 满足：
+\begin{enumerate}[label=\roman*.]
+    \item Dirichlet 条件：$f$ 在 $\R$ 上分段连续，且在每个有限区间上只有有限个极值点；
+    \item 绝对可积性：$\displaystyle\int_{-\infty}^{+\infty}\abs{f(x)}\,\d x < \infty$。
+\end{enumerate}
+即$f\in L^1(\R)$，则在 $f$ 的连续点 $x$ 处有
+\[
+\frac{1}{2\pi}\int_{-\infty}^{+\infty}\!\left[\int_{-\infty}^{+\infty} f(t)\e^{-i\omega t}\,\d t\right]\e^{i\omega x}\,\d\omega
+= \begin{cases}
+    f(x), & f \text{ 在 } x \text{ 处连续} \\[1em]
+    \dfrac{f(x^+)+f(x^-)}{2}, & f \text{ 在 } x \text{ 处不连续}
+    \end{cases}
+\]
+
+\end{theorem}
+
+\subsection{傅里叶变换}
+
+\begin{definition}[积分变换]
+    通过积分运算将像原函数 $f(t)$ 映射为像函数 $F(s)$ 的变换称为\textbf{积分变换}，记作
+    \[F(s) = \mathcal{T}[f(t)] = \int_{a}^{b} K(s,t)f(t)\,\d t,\]
+其中 $K(s,t)$ 称为\textbf{核函数}。
+\end{definition}
+
+\begin{definition}[傅里叶变换]
+设 $f\in L^1(\R)$，定义 $f$ 的\textbf{傅里叶变换}为
+\[
+\mathcal{F}[f](\omega) = \hat{f}(\omega) \defeq \int_{-\infty}^{+\infty} f(x)\e^{-i\omega x}\,\d x,\quad \omega\in\R.
+\]
+\end{definition}
+
+\begin{definition}[傅里叶逆变换]
+定义 $f$ 的\textbf{傅里叶逆变换}为
+\[
+\mathcal{F}^{-1}[F](x) \defeq \frac{1}{2\pi}\int_{-\infty}^{+\infty} F(\omega)\e^{i\omega x}\,\d\omega,\quad x\in\R.
+\]
+\end{definition}
+
+\section{单位脉冲函数}
+
+\begin{definition}[单位脉冲函数 / Dirac $\delta$ 函数]
+    单位脉冲函数 $\delta(t)$ 是满足以下两个条件的\textbf{广义函数}：
+    \begin{tasks}[label=\roman*.](2)
+        \task $\displaystyle\delta(t) = \begin{cases}0, & t\neq 0\\ \infty, & t = 0\end{cases}$；
+        \task $\displaystyle\int_{-\infty}^{+\infty}\delta(t)\,\d t = 1$。
+    \end{tasks}
+\end{definition}
+
+\begin{theorem}[$\delta$ 函数的筛选性质]
+    对任意连续函数 $\varphi$，
+    \[
+        \int_{-\infty}^{+\infty}\delta(t)\varphi(t)\,\d t = \varphi(0),\qquad
+        \int_{-\infty}^{+\infty}\delta(t-t_0)\varphi(t)\,\d t = \varphi(t_0)
+    \]
+\end{theorem}
+
+\section{傅里叶变换的性质}
+
+\subsection{基本性质}
+
+\begin{theorem}[线性性]
+    设 $f,g\in L^1(\R)$，$\alpha,\beta\in\C$。则
+    \[
+        \mathcal{F}[\alpha f + \beta g] = \alpha\mathcal{F}[f] + \beta\mathcal{F}[g]
+    \]
+    \[
+        \mathcal{F}^{-1}[\alpha F + \beta G] = \alpha\mathcal{F}^{-1}[F] + \beta\mathcal{F}^{-1}[G]
+    \]
+\end{theorem}
+
+\begin{theorem}[位移性质]
+    设 $f\in L^1(\R)$，$t_0\in\R$。则
+    \[
+        \mathcal{F}[f(t-t_0)](\omega) = \e^{-i\omega t_0}\hat f(\omega),\qquad
+        \mathcal{F}[\e^{i\omega_0 t} f(t)](\omega) = \hat f(\omega-\omega_0)
+    \]
+\end{theorem}
+
+\begin{theorem}[对称性质]
+    设 $f\in L^1(\R)$。则
+    \[
+        \mathcal{F}[f(-t)](\omega) = \hat f(-\omega),\qquad
+        \mathcal{F}[\hat f(t)](\omega) = 2\pi f(-\omega)
+    \]
+\end{theorem}
+
+\begin{theorem}[微分性质]
+    设 $f,f'\in L^1(\R)$。则
+    \[
+        \mathcal{F}[f'(t)] = i\omega \hat f(\omega)
+    \]
+    若 $f$ 连续，$f^{(k)}\in L^1(\R)$（$1\le k\le n$），$f^{(k)}(t)\to 0$（$\abs{t}\to\infty$），则
+    \[
+        \mathcal{F}[f^{(n)}(t)] = (i\omega)^n \hat f(\omega)
+    \]
+\end{theorem}
+
+\begin{theorem}[积分性质]
+    设 $g(t) = \displaystyle\int_{-\infty}^{t} f(\tau)\,\d\tau$，且 $\hat f(0)=0$。则
+    \[
+        \mathcal{F}[g(t)] = \frac{1}{i\omega}\hat f(\omega)
+    \]
+\end{theorem}
+
+\begin{theorem}[乘 $t^n$ 性质]
+    设 $f\in L^1(\R)$，$tf(t)\in L^1(\R)$。则 $\hat f$ 可微且
+    \[
+        \mathcal{F}[-it f(t)] = \hat f'(\omega)
+    \]
+\end{theorem}
+
+\subsection{常用函数的傅里叶变换}
+
+\begin{theorem}[常用傅里叶变换对]
+设 $a>0$。则
+\begin{enumerate}
+    \item 单位脉冲：$\mathcal{F}[\delta(t)] = 1$；
+    \item 矩形脉冲：$u(t)=\begin{cases}1, & \abs{t}<a\\ 0, & \abs{t}>a\end{cases}$，则$\mathcal{F}[u(t+a)-u(t-a)] = \dfrac{2\sin a\omega}{\omega}$；
+    \item 指数衰减：$\mathcal{F}[\e^{-a\abs{t}}] = \dfrac{2a}{a^2+\omega^2}$；
+    \item 高斯函数：$\mathcal{F}[\e^{-a t^2}] = \sqrt{\dfrac{\pi}{a}}\e^{-\omega^2/(4a)}$；
+    \item 单边指数：$\mathcal{F}[u(t)\e^{-at}] = \dfrac{1}{a+i\omega}$；
+    \item 符号函数：$\mathcal{F}[\operatorname{sgn} t] = \dfrac{2}{i\omega}$；
+    \item 单位阶跃：$\mathcal{F}[u(t)] = \pi\delta(\omega) + \dfrac{1}{i\omega}$。
+\end{enumerate}
+\end{theorem}
+
+\section{卷积}
+
+\subsection{卷积的定义}
+
+\begin{definition}[卷积]
+设 $f,g\in L^1(\R)$。定义 $f$ 与 $g$ 的\textbf{卷积}为
+\[
+(f*g)(t) \defeq \int_{-\infty}^{+\infty} f(\tau)g(t-\tau)\,\d\tau,\quad t\in\R.
+\]
+\end{definition}
+
+\begin{theorem}[卷积的基本性质]
+设 $f,g,h\in L^1(\R)$。则
+\begin{enumerate}
+    \item 交换律：$f*g = g*f$
+    \item 结合律：$(f*g)*h = f*(g*h)$
+    \item 线性性：$f*(\alpha g + \beta h) = \alpha(f*g) + \beta(f*h)$
+    \item 微分：若 $f$ 可微且 $f'\in L^1(\R)$，则 $(f*g)' = f'*g = f*g'$
+\end{enumerate}
+\end{theorem}
+
+\subsection{卷积定理}
+
+\begin{theorem}[卷积定理（Fourier 变换）]
+设 $f,g\in L^1(\R)$。则 $f*g\in L^1(\R)$，且
+\[
+\mathcal{F}[f*g] = \mathcal{F}[f]\cdot \mathcal{F}[g],\qquad
+\mathcal{F}[f\cdot g] = \frac{1}{2\pi}\mathcal{F}[f]*\mathcal{F}[g].
+\]
+\end{theorem}
+
+
+\ifx\allfiles\undefined
+\end{document}
+\fi

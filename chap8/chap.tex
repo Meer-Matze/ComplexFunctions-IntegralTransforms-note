@@ -1,0 +1,321 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
+\def\path{../config}
+\input{../config/_config}
+\begin{document}
+%\input{../config/cover}
+\else
+\fi
+\chapter{Laplace变换}
+
+\section{Laplace变换的定义与存在性}
+
+\subsection{定义}
+
+\begin{definition}[Laplace 变换]
+设 $f(t)$ 是定义在 $[0,+\infty)$ 上的实值（或复值）函数。若积分
+\[
+F(s) = \mathcal{L}[f](s) \defeq \int_0^{+\infty} f(t)\e^{-st}\,\d t
+\]
+对参数 $s$（复数）收敛，则称 $F(s)$ 为 $f(t)$ 的\textbf{Laplace 变换}，记作 $F(s) = \mathcal{L}[f(t)]$ 或 $F(s) = \mathscr{L}\{f(t)\}$。
+\end{definition}
+
+\begin{definition}[Laplace 逆变换]
+设 $F(s)$ 为某函数 $f(t)$ 的 Laplace 变换。称
+\[
+f(t) = \mathcal{L}^{-1}[F](t) \defeq \frac{1}{2\pi i}\int_{\sigma-i\infty}^{\sigma+i\infty} F(s)\e^{st}\,\d s
+\]
+为 $F(s)$ 的\textbf{Laplace 逆变换}，其中积分沿直线 $\Re s = \sigma$ 实施，$\sigma$ 须大于 $F(s)$ 所有奇点的实部。
+\end{definition}
+
+\subsection{存在性条件}
+
+\begin{definition}[指数阶函数]
+设 $f$ 在 $[0,+\infty)$ 上分段连续。若存在常数 $M\ge 0$ 与 $\alpha\in\R$，使得
+\[
+\abs{f(t)} \le M\e^{\alpha t},\quad \forall t\ge 0,
+\]
+则称 $f$ 为\textbf{指数阶函数}，并称 $\alpha$ 为其\textbf{增长指数}。
+\end{definition}
+
+\begin{theorem}[Laplace 变换存在性定理]
+设 $f$ 在 $[0,+\infty)$ 上分段连续，且为指数阶函数（$\abs{f(t)}\le M\e^{\alpha t}$）。则
+\begin{enumerate}
+    \item $\mathcal{L}[f](s)$ 在半平面 $\Re s > \alpha$ 内存在且解析；
+    \item 当 $\Re s\to+\infty$ 时 $F(s)\to 0$。
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[唯一性定理]
+设 $f_1,f_2$ 在 $[0,+\infty)$ 上分段连续，且 $F_1(s)=F_2(s)$ 在某半平面内成立。则 $f_1(t) = f_2(t)$ 在 $f_1,f_2$ 的所有连续点处成立。
+\end{theorem}
+
+\section{Laplace变换的性质}
+
+\begin{theorem}[线性性质]
+设 $\mathcal{L}[f_1]=F_1(s)$，$\mathcal{L}[f_2]=F_2(s)$，$\alpha,\beta\in\C$。则
+\[
+\mathcal{L}[\alpha f_1 + \beta f_2] = \alpha F_1(s) + \beta F_2(s).
+\]
+\end{theorem}
+
+\begin{theorem}[位移性质 / $s$ 域平移]
+\[
+\mathcal{L}[\e^{at}f(t)] = F(s-a),\quad \Re s > \Re a + \alpha.
+\]
+\end{theorem}
+
+\begin{theorem}[延迟性质 / $t$ 域平移]
+设 $t_0>0$，$f$ 在 $t<t_0$ 时补零。则
+\[
+\mathcal{L}[f(t-t_0)u(t-t_0)] = \e^{-st_0}F(s).
+\]
+\end{theorem}
+
+\begin{theorem}[相似性质]
+对 $a>0$，
+\[
+\mathcal{L}[f(at)] = \frac{1}{a}F\!\left(\frac{s}{a}\right).
+\]
+\end{theorem}
+
+\begin{theorem}[微分性质：$t$ 域]
+设 $f$ 连续，$f'$ 分段连续且指数阶。则
+\[
+\mathcal{L}[f'(t)] = sF(s) - f(0),\qquad
+\mathcal{L}[f^{(n)}(t)] = s^n F(s) - s^{n-1}f(0) - \cdots - f^{(n-1)}(0).
+\]
+\end{theorem}
+
+\begin{theorem}[微分性质：$s$ 域]
+设 $tf(t)$ 指数阶。则
+\[
+\mathcal{L}[-tf(t)] = F'(s),\qquad
+\mathcal{L}[(-t)^n f(t)] = F^{(n)}(s).
+\]
+\end{theorem}
+
+\begin{theorem}[积分性质]
+\[
+\mathcal{L}\!\left[\int_0^t f(\tau)\,\d\tau\right] = \frac{1}{s}F(s),\qquad
+\mathcal{L}\!\left[\frac{f(t)}{t}\right] = \int_s^{+\infty} F(\sigma)\,\d\sigma.
+\]
+\end{theorem}
+
+\begin{theorem}[初值与终值定理]
+设 $f,f'$ 均存在 Laplace 变换，且 $\lim_{s\to\infty} sF(s)$ 存在。
+\begin{enumerate}
+    \item 初值定理：$\displaystyle\lim_{t\to 0^+} f(t) = \lim_{s\to\infty} sF(s)$；
+    \item 终值定理（$f$ 的所有奇点位于 $\Re s<0$）：$\displaystyle\lim_{t\to+\infty} f(t) = \lim_{s\to 0} sF(s)$。
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[卷积定理]
+设 $\mathcal{L}[f]=F(s)$，$\mathcal{L}[g]=G(s)$，Laplace 卷积
+\[
+(f*g)(t) \defeq \int_0^t f(\tau)g(t-\tau)\,\d\tau,\quad t\ge 0.
+\]
+则
+\[
+\mathcal{L}[f*g] = F(s)G(s),\qquad \mathcal{L}^{-1}[F(s)G(s)] = (f*g)(t).
+\]
+\end{theorem}
+
+\section{常用函数的Laplace变换}
+
+\begin{theorem}[基本函数的 Laplace 变换]
+\[
+\begin{array}{lll}
+\textbf{(1)} & \mathcal{L}[1] = \dfrac{1}{s}, & \Re s > 0 \\[6pt]
+\textbf{(2)} & \mathcal{L}[t^n] = \dfrac{n!}{s^{n+1}}, & \Re s > 0,\; n\in\N \\[6pt]
+\textbf{(3)} & \mathcal{L}[\e^{at}] = \dfrac{1}{s-a}, & \Re s > \Re a \\[6pt]
+\textbf{(4)} & \mathcal{L}[\sin\omega t] = \dfrac{\omega}{s^2+\omega^2}, & \Re s > 0 \\[6pt]
+\textbf{(5)} & \mathcal{L}[\cos\omega t] = \dfrac{s}{s^2+\omega^2}, & \Re s > 0 \\[6pt]
+\textbf{(6)} & \mathcal{L}[\sinh\omega t] = \dfrac{\omega}{s^2-\omega^2}, & \Re s > \abs{\omega} \\[6pt]
+\textbf{(7)} & \mathcal{L}[\cosh\omega t] = \dfrac{s}{s^2-\omega^2}, & \Re s > \abs{\omega} \\[6pt]
+\textbf{(8)} & \mathcal{L}[t\e^{at}] = \dfrac{1}{(s-a)^2}, & \Re s > \Re a \\[6pt]
+\textbf{(9)} & \mathcal{L}[t\sin\omega t] = \dfrac{2\omega s}{(s^2+\omega^2)^2}, & \Re s > 0 \\[6pt]
+\textbf{(10)} & \mathcal{L}[t\cos\omega t] = \dfrac{s^2-\omega^2}{(s^2+\omega^2)^2}, & \Re s > 0
+\end{array}
+\]
+\end{theorem}
+
+\begin{theorem}[单位脉冲与单位阶跃]
+设 $\delta(t)$ 为单位脉冲函数，$u(t)$ 为单位阶跃函数。则
+\[
+\mathcal{L}[\delta(t)] = 1,\qquad \mathcal{L}[u(t)] = \frac{1}{s},\quad \Re s > 0.
+\]
+\end{theorem}
+
+\begin{theorem}[周期函数的 Laplace 变换]
+设 $f$ 在 $[0,+\infty)$ 上分段连续，周期为 $T$。则
+\[
+\mathcal{L}[f](s) = \frac{1}{1-\e^{-sT}}\int_0^{T} f(t)\e^{-st}\,\d t,\quad \Re s > 0.
+\]
+\end{theorem}
+
+\section{Laplace逆变换的求法}
+
+\subsection{部分分式法}
+
+\begin{theorem}[部分分式展开]
+若 $F(s)$ 为有理函数 $P(s)/Q(s)$，$\deg P < \deg Q$，且 $Q$ 有 $n$ 个互不相同的根 $s_1,\dots,s_n$，则
+\[
+F(s) = \sum_{k=1}^{n}\frac{c_k}{s-s_k},\qquad c_k = \Res(F,s_k) = \frac{P(s_k)}{Q'(s_k)},
+\]
+\[
+f(t) = \mathcal{L}^{-1}[F] = \sum_{k=1}^{n} c_k \e^{s_k t}.
+\]
+\end{theorem}
+
+\begin{theorem}[重根情形]
+若 $s_0$ 为 $Q$ 的 $m$ 阶根，则
+\[
+\mathcal{L}^{-1}\!\left[\frac{1}{(s-s_0)^m}\right] = \frac{t^{m-1}}{(m-1)!}\e^{s_0 t}.
+\]
+\end{theorem}
+
+\subsection{卷积法}
+\begin{theorem}[卷积法求逆变换]
+若 $F(s)=F_1(s)F_2(s)$，且 $f_1=\mathcal{L}^{-1}[F_1]$、$f_2=\mathcal{L}^{-1}[F_2]$ 已知，则
+\[
+f(t) = \mathcal{L}^{-1}[F] = (f_1*f_2)(t) = \int_0^t f_1(\tau)f_2(t-\tau)\,\d\tau.
+\]
+\end{theorem}
+
+\subsection{留数法}
+\begin{theorem}[Bromwich 积分]
+\[
+f(t) = \mathcal{L}^{-1}[F](t) = \frac{1}{2\pi i}\int_{\sigma-i\infty}^{\sigma+i\infty} F(s)\e^{st}\,\d s = \sum_{k=1}^{n}\Res(F(s)\e^{st},s_k),
+\]
+其中 $s_k$ 为 $F(s)$ 的所有奇点，$\sigma$ 大于所有奇点的实部。
+\end{theorem}
+
+\begin{example}
+求 $F(s)=\dfrac{s+3}{(s+1)(s-2)}$ 的 Laplace 逆变换。
+\end{example}
+\begin{solution}
+部分分式分解：
+\[
+F(s) = \frac{A}{s+1} + \frac{B}{s-2},
+\]
+其中 $A = \dfrac{(-1)+3}{(-1)-2} = -\dfrac{2}{3}$，$B = \dfrac{2+3}{2+1} = \dfrac{5}{3}$。故
+\[
+f(t) = -\frac{2}{3}\e^{-t} + \frac{5}{3}\e^{2t},\quad t\ge 0.
+\]
+\end{solution}
+
+\begin{example}
+求 $F(s)=\dfrac{1}{s(s^2+4)}$ 的 Laplace 逆变换。
+\end{example}
+\begin{solution}
+部分分式：
+\[
+F(s) = \frac{1}{s(s^2+4)} = \frac{1}{4s} - \frac{s}{4(s^2+4)}.
+\]
+故
+\[
+f(t) = \frac{1}{4} - \frac{1}{4}\cos 2t = \frac{1}{4}(1-\cos 2t).
+\]
+\end{solution}
+
+\section{Laplace变换的应用}
+
+\subsection{常系数线性微分方程的初值问题}
+
+\begin{theorem}[线性常系数 ODE 的 Laplace 求解]
+设初值问题
+\[
+y^{(n)} + a_{n-1}y^{(n-1)} + \cdots + a_1 y' + a_0 y = f(t),
+\]
+\[
+y(0)=y_0,\; y'(0)=y_1,\;\dots,\; y^{(n-1)}(0)=y_{n-1}.
+\]
+设 $\mathcal{L}[y]=Y(s)$，$\mathcal{L}[f]=F(s)$。则
+\[
+Y(s) = \frac{F(s) + \sum_{k=0}^{n-1}\bigl(s^k y_{k} + \cdots\bigr)}{s^n + a_{n-1}s^{n-1} + \cdots + a_0}.
+\]
+\end{theorem}
+
+\begin{example}
+求初值问题 $y'' - 3y' + 2y = 4\e^{3t}$，$y(0)=1$，$y'(0)=-1$。
+\end{example}
+\begin{solution}
+取 Laplace 变换：
+\[
+s^2 Y - s + 1 - 3(sY - 1) + 2Y = \frac{4}{s-3}.
+\]
+整理得
+\[
+(s^2-3s+2)Y = \frac{4}{s-3} + s - 1 - 3 = \frac{4}{s-3} + s - 4,
+\]
+\[
+Y = \frac{4}{(s-1)(s-2)(s-3)} + \frac{s-4}{(s-1)(s-2)}.
+\]
+部分分式后逐项逆变换得
+\[
+y(t) = 2\e^{3t} - \e^{2t}.
+\]
+\end{solution}
+
+\subsection{常系数线性微分方程组的求解}
+
+\begin{example}
+求方程组
+\begin{equation*}
+\begin{cases}
+x' + y' = 1,\\
+x' - y' = t,
+\end{cases}
+\quad x(0)=0,\; y(0)=0.
+\end{equation*}
+\end{example}
+\begin{solution}
+记 $X(s)=\mathcal{L}[x]$，$Y(s)=\mathcal{L}[y]$。两式相加减得
+\[
+2X = \frac{1}{s} + \frac{1}{s^2},\quad 2Y = \frac{1}{s} - \frac{1}{s^2}.
+\]
+故
+\[
+x(t) = \frac{1}{2}t + \frac{1}{4}t^2,\quad y(t) = \frac{1}{2}t - \frac{1}{4}t^2.
+\]
+\end{solution}
+
+\subsection{积分方程与积分微分方程}
+
+\begin{theorem}[Volterra 积分方程]
+形如
+\[
+y(t) = f(t) + \int_0^t K(t-\tau)y(\tau)\,\d\tau
+\]
+的 Volterra 方程可通过 Laplace 变换转化为代数方程
+\[
+Y(s) = F(s) + K(s)Y(s),
+\]
+即
+\[
+Y(s) = \frac{F(s)}{1-K(s)},\quad y(t) = \mathcal{L}^{-1}\!\left[\frac{F(s)}{1-K(s)}\right].
+\]
+\end{theorem}
+
+\begin{example}
+求积分方程 $y(t) = \sin t + \displaystyle\int_0^t y(\tau)\,\d\tau$。
+\end{example}
+\begin{solution}
+取 Laplace 变换：
+\[
+Y(s) = \frac{1}{s^2+1} + \frac{Y(s)}{s}.
+\]
+解得
+\[
+Y(s) = \frac{s}{(s^2+1)(s-1)} = \frac{1}{2}\cdot \frac{1}{s-1} - \frac{1}{2}\cdot \frac{s}{s^2+1} + \frac{1}{2}\cdot \frac{1}{s^2+1}.
+\]
+故
+\[
+y(t) = \frac{1}{2}\e^{t} - \frac{1}{2}\cos t + \frac{1}{2}\sin t.
+\]
+\end{solution}
+
+\ifx\allfiles\undefined
+\end{document}
+\fi

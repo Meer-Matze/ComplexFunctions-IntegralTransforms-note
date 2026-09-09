@@ -101,6 +101,57 @@ z_k = \sqrt[n]{r} {\rm e}^{i\left(\frac{\theta + 2k\pi}{n}\right)}, \quad k = 0,
     由定义可知，所求复变函数为
     \[ f(z) = \frac{2x}{x^2+y^2} + i\frac{y}{x^2+y^2} = \frac{2x + iy}{x^2+y^2} = \frac{\frac32z+\frac12\bar{z}}{|z|^2} = \frac{1}{2z}+\frac{1}{2\bar{z}}\]
 \end{solution}
+
+\section{习题}
+
+\begin{exercise}
+    解方程：$z^2-3iz-(3-i)=0$。
+\end{exercise}
+\begin{solution}
+    由求根公式：
+    \[
+    z = \frac{3i \pm \sqrt{(-3i)^2 + 4(3-i)}}{2}
+      = \frac{3i \pm \sqrt{-9 + 12 - 4i}}{2}
+      = \frac{3i \pm \sqrt{3 - 4i}}{2}
+    \]
+    设 $\sqrt{3 - 4i} = a + bi$ ($a,b \in \R$)，则
+    \[
+    a^2 - b^2 = 3, \quad 2ab = -4 \implies ab = -2
+    \]
+    解得 $a^2 = 4, b^2 = 1$，且 $ab < 0$，故 $a=2, b=-1$ 或 $a=-2, b=1$。
+    即 $\sqrt{3-4i} = \pm(2-i)$。
+    因此
+    \[
+    z = \frac{3i \pm (2-i)}{2} \implies z_1 = \frac{2+2i}{2} = 1+i,\quad z_2 = \frac{-2+4i}{2} = -1+2i
+    \]
+\end{solution}
+
+\begin{exercise}
+    记 $z = x + iy,\;\e^z=\e^x(\cos y + i\sin y)$。证明：$\lim\limits_{z\to 0}\frac{\e^z-1}{z}=1$。
+\end{exercise}
+\begin{proof}
+    当 $z \to 0$ 时，$x \to 0$ 且 $y \to 0$。
+    \[
+    \frac{\e^z - 1}{z} = \frac{\e^x(\cos y + i\sin y) - 1}{x + iy}
+    \]
+    分子展开：
+    \[
+    \e^x(\cos y + i\sin y) - 1 = (\e^x\cos y - 1) + i\e^x\sin y
+    \]
+    利用泰勒展开：$\e^x = 1 + x + o(x)$，$\cos y = 1 - \frac{y^2}{2} + o(y^2)$，$\sin y = y + o(y)$。
+    则
+    \begin{align*}
+    \e^x\cos y - 1 &= \bigl[1 + x + o(x)\bigr]\bigl[1 - \frac{y^2}{2} + o(y^2)\bigr] - 1 \\
+                   &= 1 + x - \frac{y^2}{2} + o(x) + o(y^2) - 1 \\
+                   &= x + o(|z|) \\
+    \e^x\sin y &= (1 + x + o(x))(y + o(y)) = y + o(|z|)
+    \end{align*}
+    因此
+    \[
+    \frac{\e^z - 1}{z} = \frac{x + iy + o(|z|)}{x + iy} = 1 + \frac{o(|z|)}{z} \to 1 \quad (z \to 0)
+    \]
+\end{proof}
+
 \ifx\allfiles\undefined
 \end{document}
 \fi

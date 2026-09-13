@@ -55,6 +55,28 @@ f'(z_0) = \frac{\partial u}{\partial x}(x_0,y_0) + i\frac{\partial v}{\partial x
 若 $u,v$ 在 $D$ 内连续可微，且 Cauchy--Riemann 方程在 $D$ 内处处成立，则 $f$ 在 $D$ 内解析。
 \end{remark}
 
+\begin{example}
+    试判断下列命题的真假，并给出证明或反例
+    \begin{tasks}[label-width=1.2em, label=(\arabic*)](1)
+        \task 如果 $f'(z_0)$ 存在，那么 $f(z)$ 在 $z_0$ 解析
+        \task 如果 $f(z)$ 在 $z_0$ 连续，那么 $f'(z_0)$ 存在
+        \task 实部和虚部满足柯西—黎曼方程的复变函数是解析函数
+    \end{tasks}
+\end{example}
+\begin{solution}
+    \begin{enumerate}[label=(\arabic*)]
+        \item \textbf{假}。可导不等于解析。解析要求在某邻域内处处可导。
+
+            反例：$f(z) = |z|^2 = x^2+y^2$。在 $z_0=0$ 处可导（$f'(0)=0$），但在 $0$ 的任意去心邻域内不可导（不满足 C-R 方程），故在 $0$ 处不解析。
+        \item \textbf{假}。连续不保证可导。
+            
+            反例：$f(z) = |z|^2 = x^2+y^2$。处处连续，但除 $z=0$ 外处处不可导。
+        \item \textbf{假}。满足 C-R 方程只是可导的必要条件，还需 $u,v$ 可微（或连续可微）。
+            
+            反例：$f(z) = x^2+ixy$仅在 $(0,0)$ 处满足 C-R 方程。
+    \end{enumerate}
+\end{solution}
+
 \section{初等函数}
 本节约定 $z=x+iy$，$x,y\in\R$。
 
@@ -76,35 +98,63 @@ ${\e}^z\colon\C\to\C$ 定义为
 \end{enumerate}
 \end{theorem}
 
-\subsection{对数函数 $\Log z$}
+\subsection{对数函数 $\Ln z$}
 \begin{definition}[对数函数（多值）]
 设 $z\in\C\setminus\{0\}$。$z$ 的\textbf{对数}（多值）定义为满足
 \[
 \e^w = z
 \]
-的所有 $w\in\C$。记作 $\Log z$。
+的所有 $w\in\C$。记作 $\Ln z$。
 \end{definition}
 
 \begin{theorem}[对数函数（多值）公式]
 对任意 $z = r\e^{i\theta}$（$r>0$，$\theta\in\R$），
 \[
-\Log z = \ln r + i(\theta + 2k\pi) = \ln r + i\Arg z,\quad k\in\Z.
+\Ln z = \ln r + i(\theta + 2k\pi) = \ln r + i\Arg z,\quad k\in\Z.
 \]
 \end{theorem}
 
-\begin{definition}[对数主值 $\log z$]
+\begin{definition}[对数主值 $\ln z$]
 取 $\arg z\in(-\pi,\pi]$，定义
 \[
-\log z \defeq \ln\abs{z} + i\arg z.
+\ln z \defeq \ln\abs{z} + i\arg z.
 \]
-称为\textbf{对数主值}，它在 $\C\setminus(-\infty,0]$ 上单值解析，且 $(\log z)' = \dfrac{1}{z}$。
+称为\textbf{对数主值}，它在 $\C\setminus(-\infty,0]$ 上单值解析，且 $(\ln z)' = \dfrac{1}{z}$。
 \end{definition}
+
+\begin{example}
+    判断下列等式是否正确
+    \begin{tasks}[label-width=1.2em, label=(\arabic*)](3)
+        \task $\ln z^2 = 2\ln z$
+        \task $\ln \sqrt{z} = \frac{1}{2}\ln z$
+        \task $\ln z_1z_2 = \ln z_1 + \ln z_2$
+    \end{tasks}
+\end{example}
+\begin{solution}
+    回顾对数主值定义：$\ln z = \ln|z| + i\arg z$，其中 $\arg z \in (-\pi, \pi]$。
+    \begin{enumerate}[label=(\arabic*)]
+        \item \textbf{不恒成立}。
+        
+            反例：$z = -1$。$\ln((-1)^2) = \ln 1 = 0$，但 $2\ln(-1) = 2(i\pi) = 2\pi i \neq 0$。
+              
+            一般有 $\ln z^2 = 2\ln z + 2k\pi i$，$k\in\{-1,0,1\}$。
+        \item \textbf{不恒成立}。
+        
+            反例：$z = -1$。$\ln\sqrt{-1} = i\arg \sqrt{-1} = \pm i\frac{\pi}{2}$，但 $\frac12\ln(-1) = \frac12(i\pi) = i\frac{\pi}{2}$。两者不相等。
+              
+            实际上 $\ln\sqrt{z} = \frac12\ln z$ 在主值意义下需注意分支割线，一般不恒等。
+        \item \textbf{不恒成立}。
+        
+            反例：$z_1 = z_2 = -1$。$\ln((-1)(-1)) = \ln 1 = 0$，但 $\ln(-1)+\ln(-1) = i\pi + i\pi = 2\pi i \neq 0$。
+              一般有 $\ln(z_1z_2) = \ln z_1 + \ln z_2 + 2k\pi i$，$k\in\{-1,0,1\}$。
+    \end{enumerate}
+\end{solution}
 
 \subsection{幂函数 $z^\alpha$}
 \begin{definition}[一般幂函数]
 设 $\alpha\in\C$，$z\in\C\setminus\{0\}$。定义
 \[
-z^\alpha \defeq \e^{\alpha\log z} = \e^{\alpha(\ln\abs{z} + i\arg z)}.
+z^\alpha \defeq \e^{\alpha\ln z} = \e^{\alpha(\ln\abs{z} + i\arg z)}.
 \]
 \end{definition}
 
@@ -132,6 +182,25 @@ $$\overline{\sin z} = \sin \bar{z},\quad \overline{\cos z}=\cos\bar z$$
 \tan z \defeq \frac{\sin z}{\cos z},\quad \cot z \defeq \frac{\cos z}{\sin z}.
 \]
 \end{definition}
+
+\begin{example}
+    解方程 $\cos z = 5$。
+\end{example}
+\begin{solution}
+    由定义 $\cos z = \frac{\e^{iz} + \e^{-iz}}{2} = 5$，设 $w = \e^{iz}$，则
+    \[
+    \frac{w + w^{-1}}{2} = 5 \implies w^2 - 10w + 1 = 0
+    \]
+    解得 $w = 5 \pm \sqrt{24} = 5 \pm 2\sqrt{6}$。
+    因为 $w = \e^{iz} \neq 0$，两根均为正实数，均可取对数。
+    \[
+    iz = \ln(5 \pm 2\sqrt{6}) + 2k\pi i,\quad k\in\Z
+    \]
+    即
+    \[
+    z = \pm i\ln(5 + 2\sqrt{6}) + 2k\pi,\quad k\in\Z
+    \]
+\end{solution}
 
 \subsection{双曲函数}
 \begin{definition}[双曲正弦与余弦]
@@ -182,6 +251,50 @@ $$\overline{\sin z} = \sin \bar{z},\quad \overline{\cos z}=\cos\bar z$$
 \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y},\qquad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}.
 \]
 \end{theorem}
+
+\begin{example}
+    验证下列函数是调和函数，并求出以 $z=x+iy$ 为自变量的解析函数 $w=u+iv$。
+    \begin{tasks}[label-width=1.2em, label=(\arabic*)](2)
+        \task $v=\arctan\frac{y}{x},\;x>0$
+        \task $u=(x-y)(x^2+4xy+y^2)$
+    \end{tasks}
+\end{example}
+\begin{solution}
+    \begin{enumerate}[label=(\arabic*)]
+        \item $v = \arctan\frac{y}{x}$ ($x>0$)。
+              计算偏导数：
+              \[
+              v_x = \frac{-y}{x^2+y^2},\quad v_y = \frac{x}{x^2+y^2}
+              \]
+              \[
+              v_{xx} = \frac{2xy}{(x^2+y^2)^2},\quad v_{yy} = \frac{-2xy}{(x^2+y^2)^2}
+              \]
+              故 $\Delta v = v_{xx} + v_{yy} = 0$，$v$ 是调和函数。
+              
+              由 C-R 方程 $u_x = v_y = \frac{x}{x^2+y^2}$，$u_y = -v_x = \frac{y}{x^2+y^2}$。
+              对 $u_x$ 积分：
+              \[u = \int \frac{y}{x^2+y^2} dx = \frac12\ln(x^2+y^2) + C(y)\]
+
+              代入 $u_y$：$\frac{y}{x^2+y^2} + C'(y) = \frac{y}{x^2+y^2} \implies C'(y)=0 \implies C$ 为常数。
+
+              解析函数为 $f(z) = \ln z + C$
+        
+        \item $u = (x-y)(x^2+4xy+y^2) = x^3 + 3x^2y - 3xy^2 - y^3$。
+              计算二阶偏导：
+              \[
+              u_x = 3x^2 + 6xy - 3y^2,\quad u_{xx} = 6x + 6y
+              \]
+              \[
+              u_y = 3x^2 - 6xy - 3y^2,\quad u_{yy} = -6x - 6y
+              \]
+              $\Delta u = u_{xx} + u_{yy} = 0$，$u$ 是调和函数。
+
+              注意到
+              \[f'(z)=\pdv{u}{x}-i\pdv{u}{y}=3x^2+6xy-3y^2-i\bigl(3x^2-6xy-3y^2\bigr)=3(1-i)z^2\]
+              于是
+              \[f(z)=\int f'(z)\d z=(1-i)z^3\]
+    \end{enumerate}
+\end{solution}
 
 \ifx\allfiles\undefined
 \end{document}

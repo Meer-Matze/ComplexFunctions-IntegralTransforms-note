@@ -39,7 +39,20 @@
     \item 共轭：$\displaystyle\overline{\int_\gamma f\,\d z} = \int_\gamma \overline{f(z)}\,\d\bar z$。
 \end{enumerate}
 \end{theorem}
-
+\begin{example}
+    分别沿 $y=x$ 与 $y=x^2$ 算出积分 $\displaystyle\int_0^{1+i}(x^2+iy)\,\d z$
+\end{example}
+\begin{solution}
+    
+    设 $\gamma_1\colon z=x+ix,\;x\in[0,1]$，则 $\d z = (1+i)\d x$，于是
+    \[
+    \int_{\gamma_1}(x^2+iy)\,\d z = \int_0^1(x^2+ix)(1+i)\,\d x = (1+i)(\frac{1}{3}+\frac{1}{2}i) = -\frac{1}{6}+\frac{5}{6}i
+    \]
+    设 $\gamma_2\colon z=x+ix^2,\;x\in[0,1]$，则 $\d z = (1+2ix)\d x$，于是
+    \[
+    \int_{\gamma_2}(x^2+iy)\,\d z = \int_0^1(x^2+ix^2)(1+2ix)\,\d x = \int_0^1(-2x^3+x^2+i(2x^3+x^2))\,\d x=-\frac16+\frac56i 
+    \]
+\end{solution}
 \begin{example}
     求积分 $\displaystyle\int_C\frac{\d z}{(z-z_0)^n},\;n\in \N$，其中 $C$ 为以 $z_0$ 为圆心、半径为 $R>0$ 的圆，取逆时针方向。
 \end{example}
@@ -130,6 +143,24 @@ f^{(n)}(z_0) = \frac{n!}{2\pi i}\oint_{\partial D}\frac{f(z)}{(z-z_0)^{n+1}}\,\d
     \oint_C\frac{\e^{-z}\sin z}{z^2}\,\d z = 2\pi i.
     \]
 \end{solution}
+
+\section{练习}
+\begin{exercise}
+    设函数 $f(z)$ 在 $|z|<1$ 内解析，且 $\abs{f(z)}\le \dfrac{1}{1-\abs{z}}$，证明：
+    \[\abs{f^{(n)}(0)}\le \frac{n!(n+1)^{n+1}}{n^n},\quad n=1,2,\dots\]
+\end{exercise}
+\begin{proof}
+    
+    由 Cauchy 积分公式的推广可知
+    \[
+    f^{(n)}(0) = \frac{n!}{2\pi i}\oint_{\abs{z}=r}\frac{f(z)}{z^{n+1}}\,\d z,\quad 0<r<1.
+    \]
+    因此
+    \[
+    \abs{f^{(n)}(0)} \le \frac{n!}{2\pi}\oint_{\abs{z}=r}\frac{\abs{f(z)}}{\abs{z}^{n+1}}\,\d s \le 
+    \frac{n!}{2\pi}\oint_{\abs{z}=\frac{n}{1+n}}\abs{\frac{\frac{1}{1-\frac{n}{1+n}}}{(\frac{n}{1+n})^{n+1}}}\,\d s = \frac{n!(n+1)^{n+1}}{n^n}
+    \]
+\end{proof}
 \ifx\allfiles\undefined
 \end{document}
 \fi

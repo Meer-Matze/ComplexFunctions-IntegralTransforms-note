@@ -126,13 +126,26 @@ f(z) = \sum_{n=-\infty}^{\infty} c_n z^n,
 \end{theorem}
 
 \begin{example}
-    求积分$\displaystyle\oint_{\abs{z}=2}\frac{z^5}{1+z^6}\,\d z$
+    计算下列积分
+    \begin{tasks}[label=(\arabic*)](2)
+        \task $\displaystyle\oint_{\abs{z}=1}z^3\sin^5\frac{1}{z}\,\d z$
+        \task $\displaystyle\oint_{\abs{z}=2}\frac{z^5}{1+z^6}\,\d z$
+    \end{tasks}
 \end{example}
 \begin{solution}
-    由 $\displaystyle\frac{z^5}{1+z^6} = \frac{1}{z(1+z^{-6})} = \frac{1}{z}-\frac{1}{z^7}+\frac{1}{z^{13}}-\cdots$，得 $\Res(f,\infty)=-1$。由留数定理
-    \[
-    \oint_{\abs{z}=2}\frac{z^5}{1+z^6}\,\d z = -2\pi i \Res(f,\infty) = 2\pi i.
-    \]
+    \begin{enumerate}
+        \item 
+        \[
+            \oint_{\abs{z}=2}\frac{z^5}{1+z^6}\,\d z = -2\pi i \Res(f,\infty) = 2\pi i \Res\!\left(\frac{\sin^5z}{z^5},0\right)
+        \]
+        注意到 $\lim\limits_{z\to 0}\dfrac{\sin^5 z}{z^5} = 1$，即 $\Res\!\left(\dfrac{\sin^5 z}{z^5},0\right) = 0$，从而
+        \[\oint_{\abs{z}=2}\frac{z^5}{1+z^6}\,\d z = 0\]
+        \item 由 $\displaystyle\frac{z^5}{1+z^6} = \frac{1}{z(1+z^{-6})} = \frac{1}{z}-\frac{1}{z^7}+\frac{1}{z^{13}}-\cdots$，得 $\Res(f,\infty)=-1$。由留数定理
+            \[
+            \oint_{\abs{z}=2}\frac{z^5}{1+z^6}\,\d z = -2\pi i \Res(f,\infty) = 2\pi i.
+            \]
+    \end{enumerate}
+    
 \end{solution}
 
 \section{留数定理计算实积分}
@@ -233,6 +246,149 @@ I = \pi\e^{-a}
 \]
 \end{solution}
 
+\section{练习}
+\begin{exercise}
+    求 $f(z) = \dfrac{z^{2n}}{1+z^n},\; n \in \Z$ 在孤立奇点处的留数。
+\end{exercise}
+\begin{solution}
+    分情况讨论 $n$ 的取值。
+
+    \subsection*{$n>0$时}
+    \begin{itemize}
+        \item \textbf{有限复平面上}
+            
+            奇点满足 $z^n=-1$，即
+            \[
+            z_k=\e^{\frac{(2k+1)\pi i}{n}}, \qquad k=0,1,\ldots,n-1
+            \]
+            由于
+            \[ \left.(1+z^n)'\right|_{z=z_k} =nz_k^{n-1}\ne0, \]
+            所以这些点都是一阶极点。由商的留数公式，
+            \[
+            \Res(f,z_k)=\frac{z_k^{2n}}{n z_k^{\,n-1}}
+            =\frac{1}{n z_k^{\,n-1}}
+            =\frac{z_k}{n z_k^n}
+            =-\frac{z_k}{n}.
+            \]
+            即
+            \[
+            \boxed{\Res(f,z_k)=-\frac{1}{n}e^{\,i(2k+1)\pi/n},\qquad k=0,1,\dots,n-1.}
+            \]
+        \item \textbf{无穷远点}
+            
+            在 $z=\infty$ 邻域的 Laurent 展开为
+            \[ \frac{z^{2n}}{1+z^n} = \frac{1}{z^n} \cdot \frac{1}{1+\frac{1}{z^n}} = \frac{1}{z^n} \left(1 - \frac{1}{z^n} + \frac{1}{z^{2n}} - \cdots \right) = \frac{1}{z^n} - \frac{1}{z^{2n}} + \frac{1}{z^{3n}} - \cdots \]
+            于是
+            \[\boxed{\Res(f,\infty)\begin{cases}
+                -1, & n=1, \\
+                0, & n\ge2.
+            \end{cases}}\]
+    \end{itemize}
+
+    \subsection*{$n=0$时}
+    \[
+    f(z)=\frac12
+    \]
+    为常函数，在有限复平面上无孤立奇点。而 $\lim\limits_{z\to\infty}f(z)=\frac12$，即无穷远点为可去奇点，故
+    \[\boxed{\Res(f,\infty)=0}\]
+
+    \subsection*{$n<0$时}
+    记 $m=-n>0$，则
+    \[
+    f(z)=\frac{1}{z^m(1+z^m)}.
+    \]
+    容易看出有限复平面上孤立奇点为 $z=0$ 和 $z^m=-1$。
+    \begin{itemize}
+        \item \textbf{$z=0$}
+            
+            原点 $z=0$ 为 $m$ 阶极点，由
+            \[
+            f(z)=z^{-m}\bigl(1-z^m+z^{2m}-\cdots\bigr)
+            =z^{-m}-1+z^m-\cdots
+            \]
+            得
+            \[\boxed{
+            \Res(f,0)=
+            \begin{cases}
+            1,&n=-1,\\
+            0,&n\le -2.
+            \end{cases}
+            }\]
+        \item \textbf{$z^m=-1$}
+            
+            奇点满足 $z^m=-1$，即
+            \[
+            z_k=e^{\frac{(2k+1)\pi i}{m}}, \qquad k=0,1,\ldots,m-1
+            \]
+            由于
+            \[ \left.(1+z^m)'\right|_{z=z_k} =mz_k^{m-1}\ne0, \]
+            所以这些点都是一阶极点。由商的留数公式，
+            \[\boxed{
+            \Res(f,z_k)=\frac{1}{mz_k^{\,m-1}}
+            =\frac{z_k}{m}
+            =-\frac{z_k}{n}
+            }\]
+        \item \textbf{无穷远点}
+            
+            在 $z=\infty$ 邻域的 Laurent 展开为
+            \[ \frac{z^{2n}}{1+z^n} = \frac{1}{z^n} \cdot \frac{1}{1+\frac{1}{z^n}} = \frac{1}{z^n} \left(1 - \frac{1}{z^n} + \frac{1}{z^{2n}} - \cdots \right) = \frac{1}{z^n} - \frac{1}{z^{2n}} + \frac{1}{z^{3n}} - \cdots \]
+            于是
+            \[\boxed{\Res(f,\infty)\begin{cases}
+                -1, & n=1, \\
+                0, & n\ge2.
+            \end{cases}}\]
+    \end{itemize}
+    综上所述，所有孤立奇点及其留数如下表所示：
+
+    \[
+    \begin{array}{|c|c|c|c|}
+        \hline
+        n
+        & \text{有限复平面上的奇点}
+        & \text{有限复平面上的留数}
+        & \Res(f,\infty)\\
+        \hline
+        n>0
+        & z_k^n=-1,\quad k=0,\ldots,n-1
+        & \Res(f,z_k)=-\dfrac{z_k}{n}
+        & \begin{cases}
+            -1,&n=1,\\
+            0,&n\ge 2
+        \end{cases}
+        \\
+        \hline
+        n=0
+        & \text{无}
+        & \text{无}
+        & 0\\
+        \hline
+        \begin{gathered}
+            n<0\\
+            (m=-n)
+        \end{gathered}
+        &
+        \begin{gathered}
+            z=0\\[4pt]
+            z_k^m=-1,\quad k=0,\ldots,m-1
+        \end{gathered}
+        &
+        \begin{gathered}
+            \Res(f,0)=
+            \begin{cases}
+                1,&m=1,\\
+                0,&m\ge 2
+            \end{cases}
+            \\[8pt]
+            \Res(f,z_k)=\dfrac{z_k}{m}
+            =-\dfrac{z_k}{n}
+        \end{gathered}
+        &
+        0\\
+        \hline
+    \end{array}
+    \]
+
+\end{solution}
 \ifx\allfiles\undefined
 \end{document}
 \fi

@@ -134,7 +134,7 @@ f_2(z) \defeq \sum_{n=1}^{\infty}\frac{c_{-n}}{(z-z_0)^n}
     \item $z_0$ 为 $f$ 的 $m$ 阶极点；
     \item $\displaystyle\lim_{z\to z_0} (z-z_0)^m f(z) = A\neq 0$（有限非零）；
     \item $\displaystyle\lim_{z\to z_0} f(z) = \infty$；
-    \item $g(z)\defeq \dfrac{1}{f(z)}$ 以 $z_0$ 为 $m$ 阶零点（即可去奇点，且 $g^{(m)}(z_0)\neq 0$）。
+    \item $f(z) = \dfrac{h(z)}{g(z)}$，其中$g(z_0)= g'(z_0) = \cdots = g^{(m-1)}(z_0) = 0,\;g^{(m)}(z_0)\neq 0$，而 $h(z_0) \neq 0$。
 \end{enumerate}
 \end{theorem}
 
@@ -147,6 +147,36 @@ f_2(z) \defeq \sum_{n=1}^{\infty}\frac{c_{-n}}{(z-z_0)^n}
 \end{enumerate}
 \end{theorem}
 
+\begin{example}
+    判断下列函数的孤立奇点类型：
+    \begin{tasks}[label=(\arabic*)](2)
+        \task $\dfrac{z}{(1+z^2)(1+\e^z)}$
+        \task $\dfrac{\ln(1+z)}{z}$
+    \end{tasks}
+\end{example}
+\begin{solution}
+    \begin{enumerate}[label=(\arabic*)]
+        \item $f(z) = \dfrac{z}{(1+z^2)(1+\e^z)} = \dfrac{z}{(z-i)(z+i)(1+\e^z)}$。
+              \begin{itemize}
+                  \item $z = \pm i$：分子非零，分母一阶零点 $\Rightarrow$ 单极点。
+                  \item $1+\e^z = 0 \Rightarrow \e^z = -1 \Rightarrow z = i\pi + 2k\pi i = (2k+1)\pi i,\; k\in\Z$。
+                  
+                        $\frac{\d}{\d z}(1+\e^z)=\e^z\neq 0 \implies 1+\e^z$ 为一阶零点，分子非零 $\Rightarrow$ 单极点。
+                  \item $z=\infty$：在 $|z|>R$ 处，$f(z)$ 不解析，存在极点 $(2k+1)\pi i$ 当 $k$ 足够大时，$\abs{(2k+1)\pi i}>R$，故 $\infty$ 不是孤立奇点。
+              \end{itemize}
+              综上所述，有一阶极点 $z = \pm i$，一阶极点 $z = (2k+1)\pi i,\; k\in\Z$
+        
+        \item $f(z) = \dfrac{\ln(1+z)}{z}$。
+              考虑 $z=0$：$\ln(1+z) = z - \frac{z^2}{2} + \frac{z^3}{3} - \cdots$，故
+              \[
+              f(z) = \frac{z - \frac{z^2}{2} + \frac{z^3}{3} - \cdots}{z} = 1 - \frac{z}{2} + \frac{z^2}{3} - \cdots
+              \]
+              显然 $z=0$ 为可去奇点。
+
+              由于 $\ln(1+z)$ 在 $\Re z \le -1$ 处不解析，故 $z=\infty$ 不是孤立奇点。
+    \end{enumerate}
+\end{solution}
+
 \section{无穷远点}
 \begin{definition}[无穷远点为孤立奇点]
     若函数 $f(z)$ 在 $z=\infty$ 的某去心邻域 $\{z\in\C\mid \abs{z}>R\}$ 内解析，则称 $f$ 以 $z=\infty$ 为孤立奇点。
@@ -155,6 +185,20 @@ f_2(z) \defeq \sum_{n=1}^{\infty}\frac{c_{-n}}{(z-z_0)^n}
     设点 $\infty$ 为 $f$ 的孤立奇点，利用倒代换 $w = \frac{1}{z}$，将 $\infty$ 映为 $0$，于是 $g(w)=f(w^{-1})$ 在 $w=0$ 处有孤立奇点。则 $\infty$ 的奇点类型与 $0$ 的奇点类型相同。
 \end{theorem}
 
+\begin{example}
+    判断下列函数在 $\infty$ 处的奇点类型：
+    \begin{tasks}[label=(\arabic*)](2)
+        \task $1+z+z^2$
+        \task $\exp\left(\dfrac{1}{1-z}\right)$
+    \end{tasks}
+\end{example}
+\begin{solution}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 函数在 $z=\infty$ 的洛朗展开的最高次项为 $z^2$，故 $\infty$ 为二阶极点。与倒代换结果一致
+        
+        \item $\lim\limits_{z\to 0} \exp\left(\dfrac{1}{1-\frac{1}{z}}\right) = 1$，故 $\infty$ 为可去奇点。与洛朗展开结果一致。
+    \end{enumerate}
+\end{solution}
 \ifx\allfiles\undefined
 \end{document}
 \fi

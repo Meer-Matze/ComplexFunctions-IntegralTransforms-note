@@ -40,18 +40,67 @@
 \begin{definition}[傅里叶变换]
 设 $f\in L^1(\R)$，定义 $f$ 的\textbf{傅里叶变换}为
 \[
-\mathcal{F}[f](\omega) = \hat{f}(\omega) \defeq \int_{-\infty}^{+\infty} f(x)\e^{-i\omega x}\,\d x,\quad \omega\in\R.
+\F[f](\omega) = F(\omega) \defeq \int_{-\infty}^{+\infty} f(x)\e^{-i\omega x}\,\d x,\quad \omega\in\R.
 \]
 \end{definition}
 
 \begin{definition}[傅里叶逆变换]
 定义 $f$ 的\textbf{傅里叶逆变换}为
 \[
-\mathcal{F}^{-1}[F](x) \defeq \frac{1}{2\pi}\int_{-\infty}^{+\infty} F(\omega)\e^{i\omega x}\,\d\omega,\quad x\in\R.
+\F^{-1}[F](x) \defeq \frac{1}{2\pi}\int_{-\infty}^{+\infty} F(\omega)\e^{i\omega x}\,\d\omega,\quad x\in\R.
 \]
 \end{definition}
 
-\section{单位脉冲函数}
+\begin{example}
+    求下列函数的傅里叶变换：
+    \begin{tasks}[label=(\arabic*)](2)
+        \task $\displaystyle f(t) = \begin{cases}
+            E, & 0\le t\le \tau\\
+            0, & else
+            \end{cases}$
+        \task $\displaystyle f(t) = \begin{cases}
+            E, & \abs{t}<\tau\\
+            0, & else
+            \end{cases}$
+    \end{tasks}
+\end{example}
+\begin{solution}
+    \begin{enumerate}[label=(\arabic*)]
+        \item \[
+        F(\omega) = \int_{0}^{\tau} E\e^{-i\omega t}\,\d t = \frac{Ei}{\omega}\left(\e^{-i\omega\tau}-1\right)
+        \]
+        \item \[
+        F(\omega) = \int_{-\tau}^{\tau} E\e^{-i\omega t}\,\d t = \frac{E}{-i\omega}\left[\e^{-i\omega\tau}-\e^{i\omega\tau}\right] = \frac{2E}{\omega}\sin(\omega\tau)
+        \]
+    \end{enumerate}
+\end{solution}
+
+\begin{example}
+    已知 $f(t)$ 的傅里叶变换为 $F(\omega) = \dfrac{\sin\omega}{\omega}$，求 $f(t)$。
+\end{example}
+\begin{solution}
+    由傅里叶逆变换公式可知
+    \[
+        f(t) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} \frac{\sin\omega}{\omega}\e^{i\omega t}\,\d\omega = \frac{1}{\pi}\int_{0}^{+\infty} \frac{\sin\omega\cos(\omega t)}{\omega}\,\d\omega.
+    \]
+    利用积化和差公式 $\sin\alpha\cos\beta=\dfrac{1}{2}[\sin(\alpha+\beta)+\sin(\alpha-\beta)]$，有
+    \[
+        f(t) = \frac{1}{2\pi}\int_{0}^{+\infty} \frac{\sin\bigl(\omega(1+t)\bigr)+\sin\bigl(\omega(1-t)\bigr)}{\omega}\,\d\omega.
+    \]
+    再利用狄利克雷积分 $\displaystyle\int_{0}^{+\infty}\frac{\sin(a\omega)}{\omega}\,\d\omega=\frac{\pi}{2}\operatorname{sgn}(a)$，得
+    \[
+        f(t) = \frac{1}{4}\bigl[\operatorname{sgn}(1+t)+\operatorname{sgn}(1-t)\bigr]
+        = \begin{cases}
+            \dfrac{1}{2}, & \abs{t}<1,\\[0.8em]
+            0, & \abs{t}>1.
+        \end{cases}
+    \]
+\end{solution}
+
+
+\section{单位脉冲函数和单位阶跃函数}
+
+\subsection{单位脉冲函数}
 
 \begin{definition}[单位脉冲函数 / Dirac $\delta$ 函数]
     单位脉冲函数 $\delta(t)$ 是满足以下两个条件的\textbf{广义函数}：
@@ -62,10 +111,28 @@
 \end{definition}
 
 \begin{theorem}[$\delta$ 函数的筛选性质]
-    对任意连续函数 $\varphi$，
+    对任意连续函数 $\varphi$，任意 $t_0\in\R$，有
     \[
-        \int_{-\infty}^{+\infty}\delta(t)\varphi(t)\,\d t = \varphi(0),\qquad
         \int_{-\infty}^{+\infty}\delta(t-t_0)\varphi(t)\,\d t = \varphi(t_0)
+    \]
+\end{theorem}
+
+\subsection{单位阶跃函数}
+\begin{definition}[单位阶跃函数]
+    单位阶跃函数 $u(t)$ 定义为
+    \[
+        u(t) = \begin{cases}
+            1, & t>0\\
+            0, & t<0
+        \end{cases}
+    \]
+\end{definition}
+
+\begin{theorem}
+    单位阶跃函数 $u(t)$ 与单位脉冲函数 $\delta(t)$ 的关系为
+    \[
+        u(t) = \int_{-\infty}^{t}\delta(\tau)\,\d\tau,\qquad
+        \delta(t) = \frac{\d u(t)}{\d t}
     \]
 \end{theorem}
 
@@ -76,68 +143,89 @@
 \begin{theorem}[线性性]
     设 $f,g\in L^1(\R)$，$\alpha,\beta\in\C$。则
     \[
-        \mathcal{F}[\alpha f + \beta g] = \alpha\mathcal{F}[f] + \beta\mathcal{F}[g]
+        \F[\alpha f + \beta g] = \alpha\F[f] + \beta\F[g]
     \]
     \[
-        \mathcal{F}^{-1}[\alpha F + \beta G] = \alpha\mathcal{F}^{-1}[F] + \beta\mathcal{F}^{-1}[G]
+        \F^{-1}[\alpha F + \beta G] = \alpha\F^{-1}[F] + \beta\F^{-1}[G]
     \]
 \end{theorem}
 
 \begin{theorem}[位移性质]
     设 $f\in L^1(\R)$，$t_0\in\R$。则
     \[
-        \mathcal{F}[f(t-t_0)](\omega) = \e^{-i\omega t_0}\hat f(\omega),\qquad
-        \mathcal{F}[\e^{i\omega_0 t} f(t)](\omega) = \hat f(\omega-\omega_0)
+        \F[f(t-t_0)](\omega) = \e^{-i\omega t_0}F(\omega),\qquad
+        \F[\e^{i\omega_0 t} f(t)](\omega) = F(\omega-\omega_0)
     \]
 \end{theorem}
 
 \begin{theorem}[对称性质]
     设 $f\in L^1(\R)$。则
     \[
-        \mathcal{F}[f(-t)](\omega) = \hat f(-\omega),\qquad
-        \mathcal{F}[\hat f(t)](\omega) = 2\pi f(-\omega)
+        \F[f(-t)](\omega) = F(-\omega),\qquad
+        \F[F(t)](\omega) = 2\pi f(-\omega)
     \]
 \end{theorem}
 
 \begin{theorem}[微分性质]
     设 $f,f'\in L^1(\R)$。则
     \[
-        \mathcal{F}[f'(t)] = i\omega \hat f(\omega)
+        \F[f'(t)] = i\omega F(\omega)
     \]
     若 $f$ 连续，$f^{(k)}\in L^1(\R)$（$1\le k\le n$），$f^{(k)}(t)\to 0$（$\abs{t}\to\infty$），则
     \[
-        \mathcal{F}[f^{(n)}(t)] = (i\omega)^n \hat f(\omega)
+        \F[f^{(n)}(t)] = (i\omega)^n F(\omega)
     \]
 \end{theorem}
 
 \begin{theorem}[积分性质]
-    设 $g(t) = \displaystyle\int_{-\infty}^{t} f(\tau)\,\d\tau$，且 $\hat f(0)=0$。则
+    设 $g(t) = \displaystyle\int_{-\infty}^{t} f(\tau)\,\d\tau$，且 $F(0)=0$。则
     \[
-        \mathcal{F}[g(t)] = \frac{1}{i\omega}\hat f(\omega)
+        \F[g(t)] = \frac{1}{i\omega}F(\omega)
     \]
 \end{theorem}
 
 \begin{theorem}[乘 $t^n$ 性质]
-    设 $f\in L^1(\R)$，$tf(t)\in L^1(\R)$。则 $\hat f$ 可微且
+    设 $f\in L^1(\R)$，$tf(t)\in L^1(\R)$。则 $F$ 可微且
     \[
-        \mathcal{F}[-it f(t)] = \hat f'(\omega)
+        \F[-it f(t)] = F'(\omega)
     \]
 \end{theorem}
 
 \subsection{常用函数的傅里叶变换}
 
 \begin{theorem}[常用傅里叶变换对]
-设 $a>0$。则
-\begin{enumerate}
-    \item 单位脉冲：$\mathcal{F}[\delta(t)] = 1$；
-    \item 矩形脉冲：$u(t)=\begin{cases}1, & \abs{t}<a\\ 0, & \abs{t}>a\end{cases}$，则$\mathcal{F}[u(t+a)-u(t-a)] = \dfrac{2\sin a\omega}{\omega}$；
-    \item 指数衰减：$\mathcal{F}[\e^{-a\abs{t}}] = \dfrac{2a}{a^2+\omega^2}$；
-    \item 高斯函数：$\mathcal{F}[\e^{-a t^2}] = \sqrt{\dfrac{\pi}{a}}\e^{-\omega^2/(4a)}$；
-    \item 单边指数：$\mathcal{F}[u(t)\e^{-at}] = \dfrac{1}{a+i\omega}$；
-    \item 符号函数：$\mathcal{F}[\operatorname{sgn} t] = \dfrac{2}{i\omega}$；
-    \item 单位阶跃：$\mathcal{F}[u(t)] = \pi\delta(\omega) + \dfrac{1}{i\omega}$。
-\end{enumerate}
+    设 $a>0$。则
+    \[
+    \begin{array}{ll}
+        \textbf{(1)} & \F[\delta(t)] = 1 \\
+        \textbf{(2)} & \displaystyle \F[u(t)]=\frac{1}{i \omega} + \pi \delta(\omega) \\
+        \textbf{(3)} & \F[e^{i\omega_0t}]=2\pi\delta(\omega - \omega_0) = \F[\cos \omega_0 t] + i\F[\sin \omega_0 t] \\
+        \textbf{(4)} & \F[\sin \omega_0 t]=\pi i[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)] \\
+        \textbf{(5)} & \F[\cos \omega_0 t]=\pi[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)] 
+    \end{array}
+    \]
+    
 \end{theorem}
+
+\begin{example}
+    求函数 $\sin\left(5t+\dfrac23\right)$ 的傅里叶变换。
+\end{example}
+\begin{solution}
+    由傅里叶变换的线性性和位移性质可知
+    \[
+        \F\left[\sin\left(5t+\frac23\right)\right] = \F\left[\sin 5t\cos\frac23 + \cos 5t\sin\frac23\right] = \cos\frac23\F[\sin 5t] + \sin\frac23\F[\cos 5t]
+    \]
+    又由常用傅里叶变换对可知
+    \[
+        \F[\sin 5t] = \pi i[\delta(\omega+5)-\delta(\omega-5)],\qquad
+        \F[\cos 5t] = \pi[\delta(\omega+5)+\delta(\omega-5)]
+    \]
+    因此
+    \[
+        \F\left[\sin\left(5t+\frac23\right)\right] = \pi i\cos\frac23[\delta(\omega+5)-\delta(\omega-5)] + \pi\sin\frac23[\delta(\omega+5)+\delta(\omega-5)]
+    \]
+\end{solution}
+
 
 \section{卷积}
 
@@ -165,11 +253,77 @@
 \begin{theorem}[卷积定理（Fourier 变换）]
 设 $f,g\in L^1(\R)$。则 $f*g\in L^1(\R)$，且
 \[
-\mathcal{F}[f*g] = \mathcal{F}[f]\cdot \mathcal{F}[g],\qquad
-\mathcal{F}[f\cdot g] = \frac{1}{2\pi}\mathcal{F}[f]*\mathcal{F}[g].
+\F[f*g] = \F[f]\cdot \F[g],\qquad
+\F[f\cdot g] = \frac{1}{2\pi}\F[f]*\F[g].
 \]
 \end{theorem}
 
+\section{练习}
+\begin{exercise}
+    证明
+    \[
+    \int_0^{+\infty} \frac{\sin \omega\pi\sin\omega t}{1-\omega^2}\,\d\omega = \begin{cases}
+        \dfrac{\pi}{2}\sin t, & \abs{t}\le \pi\\
+        0, & \abs{t}>\pi
+    \end{cases}
+    \]
+\end{exercise}
+\begin{proof}
+    设
+    \[
+    f(t) = \begin{cases}
+        \sin t, & \abs{t}\le \pi\\
+        0, & \abs{t}>\pi
+    \end{cases}
+    \]
+
+    则 $f\in L^1(\R)$，且在 $\R$ 上分段连续。由傅里叶积分定理可知
+    \[
+    f(t) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} F(\omega)\e^{i\omega t}\,\d\omega,
+    \]
+
+    其中
+    \[
+    F(\omega) = \int_{-\infty}^{+\infty} f(x)\e^{-i\omega x}\,\d x = \int_{-\pi}^{\pi} \sin x\e^{-i\omega x}\,\d x.
+    \]
+
+    计算 $F(\omega)$：
+    \[
+    \begin{aligned}
+    F(\omega) &= \int_{-\pi}^{\pi} \sin x\e^{-i\omega x}\,\d x
+    = \frac{1}{2i}\int_{-\pi}^{\pi}\left(\e^{ix}-\e^{-ix}\right)\e^{-i\omega x}\,\d x \\[1em]
+    &= \frac{1}{2i}\int_{-\pi}^{\pi}\left(\e^{i(1-\omega)x}-\e^{-i(1+\omega)x}\right)\d x \\[1em]
+    &= \frac{1}{i}\left[\frac{\sin((1-\omega)\pi)}{1-\omega}-\frac{\sin((1+\omega)\pi)}{1+\omega}\right] \\[1em]
+    &= \frac{1}{i}\sin(\omega\pi)\left[\frac{1}{1-\omega}+\frac{1}{1+\omega}\right]
+    = \frac{2\sin(\omega\pi)}{i(1-\omega^2)}
+    = -\frac{2i\sin(\omega\pi)}{1-\omega^2}.
+    \end{aligned}
+    \]
+
+    代入傅里叶积分定理：
+    \[
+    f(t) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} F(\omega)\e^{i\omega t}\,\d\omega
+    = -\frac{i}{\pi}\int_{-\infty}^{+\infty}\frac{\sin(\omega\pi)}{1-\omega^2}\e^{i\omega t}\,\d\omega.
+    \]
+    
+    利用 $\e^{i\omega t}=\cos(\omega t)+i\sin(\omega t)$，并注意到
+    $\dfrac{\sin(\omega\pi)\cos(\omega t)}{1-\omega^2}$ 为奇函数，其在对称区间上的积分为 0，而
+    $\dfrac{\sin(\omega\pi)\sin(\omega t)}{1-\omega^2}$ 为偶函数，故
+    \[
+    f(t) = \frac{1}{\pi}\int_{-\infty}^{+\infty}\frac{\sin(\omega\pi)\sin(\omega t)}{1-\omega^2}\,\d\omega
+    = \frac{2}{\pi}\int_{0}^{+\infty}\frac{\sin(\omega\pi)\sin(\omega t)}{1-\omega^2}\,\d\omega.
+    \]
+    
+    因此
+    \[
+    \int_{0}^{+\infty}\frac{\sin(\omega\pi)\sin(\omega t)}{1-\omega^2}\,\d\omega
+    = \frac{\pi}{2}f(t)
+    = \begin{cases}
+        \dfrac{\pi}{2}\sin t, & \abs{t}\le \pi,\\[1em]
+        0, & \abs{t}>\pi.
+    \end{cases}
+    \]
+\end{proof}
 
 \ifx\allfiles\undefined
 \end{document}

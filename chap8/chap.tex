@@ -13,41 +13,41 @@
 \subsection{定义}
 
 \begin{definition}[Laplace 变换]
-设 $f(t)$ 是定义在 $[0,+\infty)$ 上的实值（或复值）函数。若积分
+设 $f(t)$ 是定义在 $[0,+\infty)$ 上的实值（或复值）函数．若积分
 \[
 F(s) = \L[f](s) \defeq \int_0^{+\infty} f(t)\e^{-st}\,\d t
 \]
-对参数 $s$（复数）收敛，则称 $F(s)$ 为 $f(t)$ 的\textbf{Laplace 变换}，记作 $F(s) = \L[f(t)]$ 或 $F(s) = \mathscr{L}\{f(t)\}$。
+对参数 $s$（复数）收敛，则称 $F(s)$ 为 $f(t)$ 的\textbf{Laplace 变换}，记作 $F(s) = \L[f(t)]$ 或 $F(s) = \mathscr{L}\{f(t)\}$．
 \end{definition}
 
 \begin{definition}[Laplace 逆变换]
-设 $F(s)$ 为某函数 $f(t)$ 的 Laplace 变换。称
+设 $F(s)$ 为某函数 $f(t)$ 的 Laplace 变换．称
 \[
 f(t) = \L^{-1}[F](t) \defeq \frac{1}{2\pi i}\int_{\sigma-i\infty}^{\sigma+i\infty} F(s)\e^{st}\,\d s
 \]
-为 $F(s)$ 的\textbf{Laplace 逆变换}，其中积分沿直线 $\Re s = \sigma$ 实施，$\sigma$ 须大于 $F(s)$ 所有奇点的实部。
+为 $F(s)$ 的\textbf{Laplace 逆变换}，其中积分沿直线 $\Re s = \sigma$ 实施，$\sigma$ 须大于 $F(s)$ 所有奇点的实部．
 \end{definition}
 
 \subsection{存在性条件}
 
 \begin{definition}[指数阶函数]
-设 $f$ 在 $[0,+\infty)$ 上分段连续。若存在常数 $M\ge 0$ 与 $\alpha\in\R$，使得
+设 $f$ 在 $[0,+\infty)$ 上分段连续．若存在常数 $M\ge 0$ 与 $\alpha\in\R$，使得
 \[
 \abs{f(t)} \le M\e^{\alpha t},\quad \forall t\ge 0,
 \]
-则称 $f$ 为\textbf{指数阶函数}，并称 $\alpha$ 为其\textbf{增长指数}。
+则称 $f$ 为\textbf{指数阶函数}，并称 $\alpha$ 为其\textbf{增长指数}．
 \end{definition}
 
 \begin{theorem}[Laplace 变换存在性定理]
-设 $f$ 在 $[0,+\infty)$ 上分段连续，且为指数阶函数。则
+设 $f$ 在 $[0,+\infty)$ 上分段连续，且为指数阶函数．则
 \begin{enumerate}
     \item $\L[f](s)$ 在半平面 $\Re s > \alpha$ 内存在且解析；
-    \item 当 $\Re s\to+\infty$ 时 $F(s)\to 0$。
+    \item 当 $\Re s\to+\infty$ 时 $F(s)\to 0$．
 \end{enumerate}
 \end{theorem}
 
 \begin{theorem}[唯一性定理]
-设 $f_1,f_2$ 在 $[0,+\infty)$ 上分段连续，且 $F_1(s)=F_2(s)$ 在某半平面内成立。则 $f_1(t) = f_2(t)$ 在 $f_1,f_2$ 的所有连续点处成立。
+设 $f_1,f_2$ 在 $[0,+\infty)$ 上分段连续，且 $F_1(s)=F_2(s)$ 在某半平面内成立．则 $f_1(t) = f_2(t)$ 在 $f_1,f_2$ 的所有连续点处成立．
 \end{theorem}
 
 \begin{example}
@@ -91,7 +91,7 @@ f(t) = \L^{-1}[F](t) \defeq \frac{1}{2\pi i}\int_{\sigma-i\infty}^{\sigma+i\inft
 \section{Laplace变换的性质}
 
 \begin{theorem}[线性性质]
-设 $\L[f_1]=F_1(s)$，$\L[f_2]=F_2(s)$，$\alpha,\beta\in\C$。则
+设 $\L[f_1]=F_1(s)$，$\L[f_2]=F_2(s)$，$\alpha,\beta\in\C$．则
 \[
 \L[\alpha f_1 + \beta f_2] = \alpha F_1(s) + \beta F_2(s).
 \]
@@ -104,7 +104,7 @@ f(t) = \L^{-1}[F](t) \defeq \frac{1}{2\pi i}\int_{\sigma-i\infty}^{\sigma+i\inft
 \end{theorem}
 
 \begin{theorem}[延迟性质 / $t$ 域平移]
-设 $t_0>0$，$f$ 在 $t<t_0$ 时补零。则
+设 $t_0>0$，$f$ 在 $t<t_0$ 时补零．则
 \[
 \L[f(t-t_0)u(t-t_0)] = \e^{-st_0}F(s).
 \]
@@ -118,7 +118,7 @@ f(t) = \L^{-1}[F](t) \defeq \frac{1}{2\pi i}\int_{\sigma-i\infty}^{\sigma+i\inft
 \end{theorem}
 
 \begin{theorem}[微分性质：$t$ 域]
-设 $f$ 连续，$f'$ 分段连续且指数阶。则
+设 $f$ 连续，$f'$ 分段连续且指数阶．则
 \[
 \L[f'(t)] = sF(s) - f(0),\qquad
 \L[f^{(n)}(t)] = s^n F(s) - s^{n-1}f(0) - \cdots - f^{(n-1)}(0).
@@ -126,7 +126,7 @@ f(t) = \L^{-1}[F](t) \defeq \frac{1}{2\pi i}\int_{\sigma-i\infty}^{\sigma+i\inft
 \end{theorem}
 
 \begin{theorem}[微分性质：$s$ 域]
-设 $tf(t)$ 指数阶。则
+设 $tf(t)$ 指数阶．则
 \[
 \L[-tf(t)] = F'(s),\qquad
 \L[(-t)^n f(t)] = F^{(n)}(s).
@@ -141,10 +141,10 @@ f(t) = \L^{-1}[F](t) \defeq \frac{1}{2\pi i}\int_{\sigma-i\infty}^{\sigma+i\inft
 \end{theorem}
 
 \begin{theorem}[初值与终值定理]
-设 $f,f'$ 均存在 Laplace 变换，且 $\lim_{s\to\infty} sF(s)$ 存在。
+设 $f,f'$ 均存在 Laplace 变换，且 $\lim_{s\to\infty} sF(s)$ 存在．
 \begin{enumerate}
     \item 初值定理：$\displaystyle\lim_{t\to 0^+} f(t) = \lim_{s\to\infty} sF(s)$；
-    \item 终值定理（$f$ 的所有奇点位于 $\Re s<0$）：$\displaystyle\lim_{t\to+\infty} f(t) = \lim_{s\to 0} sF(s)$。
+    \item 终值定理（$f$ 的所有奇点位于 $\Re s<0$）：$\displaystyle\lim_{t\to+\infty} f(t) = \lim_{s\to 0} sF(s)$．
 \end{enumerate}
 \end{theorem}
 
@@ -179,14 +179,14 @@ f(t) = \L^{-1}[F](t) \defeq \frac{1}{2\pi i}\int_{\sigma-i\infty}^{\sigma+i\inft
 \end{theorem}
 
 \begin{theorem}[单位脉冲与单位阶跃]
-设 $\delta(t)$ 为单位脉冲函数，$u(t)$ 为单位阶跃函数。则
+设 $\delta(t)$ 为单位脉冲函数，$u(t)$ 为单位阶跃函数．则
 \[
 \L[\delta(t)] = 1,\qquad \L[u(t)] = \frac{1}{s},\quad \Re s > 0.
 \]
 \end{theorem}
 
 \begin{theorem}[周期函数的 Laplace 变换]
-设 $f$ 在 $[0,+\infty)$ 上分段连续，周期为 $T$。则
+设 $f$ 在 $[0,+\infty)$ 上分段连续，周期为 $T$．则
 \[
 \L[f](s) = \frac{1}{1-\e^{-sT}}\int_0^{T} f(t)\e^{-st}\,\d t,\quad \Re s > 0.
 \]
@@ -270,7 +270,7 @@ f(t) = \L^{-1}[F] = \sum_{k=1}^{n} c_k \e^{s_k t}.
         f(t) = \frac{t^{3}}{3!}\e^{-t} = \frac{t^3}{6}\e^{-t},\quad t\ge 0.
         \]
 
-        \item 先对不含延迟因子的部分求逆变换。令
+        \item 先对不含延迟因子的部分求逆变换．令
         \[
         G(s)=\frac{s+1}{s^2+s+1}=\frac{s+\frac12}{\left(s+\frac12\right)^2+\left(\frac{\sqrt3}{2}\right)^2}
         +\frac{\frac12}{\left(s+\frac12\right)^2+\left(\frac{\sqrt3}{2}\right)^2}
@@ -296,11 +296,11 @@ f(t) = \L^{-1}[F] = (f_1*f_2)(t) = \int_0^t f_1(\tau)f_2(t-\tau)\,\d\tau.
 \end{theorem}
 
 \begin{example}
-    求 $F(s) = \dfrac{1}{(s^2+4)^2}$ 的 Laplace 逆变换。
+    求 $F(s) = \dfrac{1}{(s^2+4)^2}$ 的 Laplace 逆变换．
 \end{example}
 \begin{solution}
     利用卷积法：$\dfrac{1}{(s^2+4)^2}=\dfrac{1}{s^2+4}\cdot\dfrac{1}{s^2+4}$，而
-    $\mathcal{L}^{-1}\!\left[\dfrac{1}{s^2+4}\right]=\dfrac{1}{2}\sin 2t$。故
+    $\mathcal{L}^{-1}\!\left[\dfrac{1}{s^2+4}\right]=\dfrac{1}{2}\sin 2t$．故
     \[
     f(t)=\left(\frac{1}{2}\sin 2t\right)*\left(\frac{1}{2}\sin 2t\right)
     =\frac{1}{4}\int_0^t \sin(2\tau)\sin\bigl(2(t-\tau)\bigr)\,\d\tau.
@@ -320,25 +320,25 @@ f(t) = \L^{-1}[F] = (f_1*f_2)(t) = \int_0^t f_1(\tau)f_2(t-\tau)\,\d\tau.
 \[
 f(t) = \L^{-1}[F](t) = \frac{1}{2\pi i}\int_{\sigma-i\infty}^{\sigma+i\infty} F(s)\e^{st}\,\d s = \sum_{k=1}^{n}\Res(F(s)\e^{st},s_k),
 \]
-其中 $s_k$ 为 $F(s)$ 的所有奇点，$\sigma$ 大于所有奇点的实部。
+其中 $s_k$ 为 $F(s)$ 的所有奇点，$\sigma$ 大于所有奇点的实部．
 \end{theorem}
 
 \begin{example}
-求 $F(s)=\dfrac{s+3}{(s+1)(s-2)}$ 的 Laplace 逆变换。
+求 $F(s)=\dfrac{s+3}{(s+1)(s-2)}$ 的 Laplace 逆变换．
 \end{example}
 \begin{solution}
 部分分式分解：
 \[
 F(s) = \frac{A}{s+1} + \frac{B}{s-2},
 \]
-其中 $A = \dfrac{(-1)+3}{(-1)-2} = -\dfrac{2}{3}$，$B = \dfrac{2+3}{2+1} = \dfrac{5}{3}$。故
+其中 $A = \dfrac{(-1)+3}{(-1)-2} = -\dfrac{2}{3}$，$B = \dfrac{2+3}{2+1} = \dfrac{5}{3}$．故
 \[
 f(t) = -\frac{2}{3}\e^{-t} + \frac{5}{3}\e^{2t},\quad t\ge 0
 \]
 \end{solution}
 
 \begin{example}
-求 $F(s)=\dfrac{1}{s(s^2+4)}$ 的 Laplace 逆变换。
+求 $F(s)=\dfrac{1}{s(s^2+4)}$ 的 Laplace 逆变换．
 \end{example}
 \begin{solution}
 部分分式：
@@ -353,12 +353,12 @@ f(t) = \frac{1}{4} - \frac{1}{4}\cos 2t = \frac{1}{4}(1-\cos 2t)
 
 \section{Laplace变换的应用}
 
-Laplace 变换可以将微积分方程转化为代数方程，解出代数方程后再取逆变换即可得到微积分方程的解。
+Laplace 变换可以将微积分方程转化为代数方程，解出代数方程后再取逆变换即可得到微积分方程的解．
 
 \subsection{常系数线性微分方程的初值问题}
 
 \begin{example}
-求初值问题 $y'' - 3y' + 2y = 4\e^{3t}$，$y(0)=1$，$y'(0)=-1$。
+求初值问题 $y'' - 3y' + 2y = 4\e^{3t}$，$y(0)=1$，$y'(0)=-1$．
 \end{example}
 \begin{solution}
 取 Laplace 变换：
@@ -390,7 +390,7 @@ y(t) = 2\e^{3t} - \e^{2t}
 \]
 \end{example}
 \begin{solution}
-    设 $X(s)=\L[x(t)]$，$Y(s)=\L[y(t)]$。对方程组取 Laplace 变换，利用 $\L[e^t]=\dfrac{1}{s-1}$ 与初值 $x(0)=y(0)=1$：
+    设 $X(s)=\L[x(t)]$，$Y(s)=\L[y(t)]$．对方程组取 Laplace 变换，利用 $\L[e^t]=\dfrac{1}{s-1}$ 与初值 $x(0)=y(0)=1$：
 
     第一个方程：
     \[
@@ -430,7 +430,7 @@ y(t) = 2\e^{3t} - \e^{2t}
 \subsection{积分方程与微积分方程}
 
 \begin{example}
-求积分方程 $y(t) = \sin t + \displaystyle\int_0^t y(\tau)\,\d\tau$。
+求积分方程 $y(t) = \sin t + \displaystyle\int_0^t y(\tau)\,\d\tau$．
 \end{example}
 \begin{solution}
 取 Laplace 变换：
@@ -448,10 +448,10 @@ y(t) = \frac{1}{2}\e^{t} - \frac{1}{2}\cos t + \frac{1}{2}\sin t
 \end{solution}
 
 \begin{example}
-    求微积分方程 $\displaystyle y'(t)-4y(t) +4\int_0^t y(\tau)\,\d\tau = \frac{t^3}{3},\quad y(0)=0$。
+    求微积分方程 $\displaystyle y'(t)-4y(t) +4\int_0^t y(\tau)\,\d\tau = \frac{t^3}{3},\quad y(0)=0$．
 \end{example}
 \begin{solution}
-    设 $Y(s)=\L[y(t)]$。对方程取 Laplace 变换得：
+    设 $Y(s)=\L[y(t)]$．对方程取 Laplace 变换得：
     \[
     sY-4Y+\frac{4}{s}Y=\frac{2}{s^4}
     \]

@@ -11,11 +11,11 @@
 
 \subsection{导数}
 \begin{definition}[导数]
-设 $D\subseteq\C$ 为非空开集，$f\colon D\to\C$，$z_0\in D$。若极限
+设 $D\subseteq\C$ 为非空开集，$f\colon D\to\C$，$z_0\in D$．若极限
 \[
 f'(z_0)\defeq\lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}
 \]
-存在，则称 $f$ 在 $z_0$ 处\textbf{可导}，称 $f'(z_0)$ 为 $f$ 在 $z_0$ 处的\textbf{导数}。
+存在，则称 $f$ 在 $z_0$ 处\textbf{可导}，称 $f'(z_0)$ 为 $f$ 在 $z_0$ 处的\textbf{导数}．
 \end{definition}
 
 \begin{definition}[导函数]
@@ -23,12 +23,12 @@ f'(z_0)\defeq\lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}
 \[
 f'(z) \defeq \lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z},\quad z\in D
 \]
-为 $f$ 的\textbf{导函数}。
+为 $f$ 的\textbf{导函数}．
 \end{definition}
 
 \subsection{解析}
 \begin{definition}[解析]
-设 $D\subseteq\C$ 为非空开集，$f\colon D\to\C$。若 $f$ 在 $z_0\in D$ 的某邻域内处处可导，则称 $f$ 在 $z_0$ 处\textbf{解析}（analytic / holomorphic）；若 $f$ 在 $D$ 内每一点均解析，则称 $f$ 在 $D$ 内\textbf{解析}，或称 $f$ 是 $D$ 内的\textbf{解析函数}。
+设 $D\subseteq\C$ 为非空开集，$f\colon D\to\C$．若 $f$ 在 $z_0\in D$ 的某邻域内处处可导，则称 $f$ 在 $z_0$ 处\textbf{解析}（analytic / holomorphic）；若 $f$ 在 $D$ 内每一点均解析，则称 $f$ 在 $D$ 内\textbf{解析}，或称 $f$ 是 $D$ 内的\textbf{解析函数}．
 \end{definition}
 
 \begin{theorem}[Cauchy--Riemann 方程（必要条件）]
@@ -40,7 +40,7 @@ f'(z) \defeq \lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z},\quad z\in 
 \end{theorem}
 
 \begin{theorem}[Cauchy--Riemann 方程（充要条件）]
-设 $D\subseteq\C$ 为开集，$f(z)=u(x,y)+iv(x,y)$。若 $u,v$ 在 $(x_0,y_0)$ 的某邻域内可微，且满足 Cauchy--Riemann 方程
+设 $D\subseteq\C$ 为开集，$f(z)=u(x,y)+iv(x,y)$．若 $u,v$ 在 $(x_0,y_0)$ 的某邻域内可微，且满足 Cauchy--Riemann 方程
 \[
 \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y},\quad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x},
 \]
@@ -52,7 +52,7 @@ f'(z_0) = \frac{\partial u}{\partial x}(x_0,y_0) + i\frac{\partial v}{\partial x
 \end{theorem}
 
 \begin{remark}
-若 $u,v$ 在 $D$ 内连续可微，且 Cauchy--Riemann 方程在 $D$ 内处处成立，则 $f$ 在 $D$ 内解析。
+若 $u,v$ 在 $D$ 内连续可微，且 Cauchy--Riemann 方程在 $D$ 内处处成立，则 $f$ 在 $D$ 内解析．
 \end{remark}
 
 \begin{example}
@@ -65,20 +65,20 @@ f'(z_0) = \frac{\partial u}{\partial x}(x_0,y_0) + i\frac{\partial v}{\partial x
 \end{example}
 \begin{solution}
     \begin{enumerate}[label=(\arabic*)]
-        \item \textbf{假}。可导不等于解析。解析要求在某邻域内处处可导。
+        \item \textbf{假}．可导不等于解析．解析要求在某邻域内处处可导．
 
-            反例：$f(z) = |z|^2 = x^2+y^2$。在 $z_0=0$ 处可导（$f'(0)=0$），但在 $0$ 的任意去心邻域内不可导（不满足 C-R 方程），故在 $0$ 处不解析。
-        \item \textbf{假}。连续不保证可导。
+            反例：$f(z) = |z|^2 = x^2+y^2$．在 $z_0=0$ 处可导（$f'(0)=0$），但在 $0$ 的任意去心邻域内不可导（不满足 C-R 方程），故在 $0$ 处不解析．
+        \item \textbf{假}．连续不保证可导．
             
-            反例：$f(z) = |z|^2 = x^2+y^2$。处处连续，但除 $z=0$ 外处处不可导。
-        \item \textbf{假}。满足 C-R 方程只是可导的必要条件，还需 $u,v$ 可微（或连续可微）。
+            反例：$f(z) = |z|^2 = x^2+y^2$．处处连续，但除 $z=0$ 外处处不可导．
+        \item \textbf{假}．满足 C-R 方程只是可导的必要条件，还需 $u,v$ 可微（或连续可微）．
             
-            反例：$f(z) = x^2+ixy$仅在 $(0,0)$ 处满足 C-R 方程。
+            反例：$f(z) = x^2+ixy$仅在 $(0,0)$ 处满足 C-R 方程．
     \end{enumerate}
 \end{solution}
 
 \section{初等函数}
-本节约定 $z=x+iy$，$x,y\in\R$。
+本节约定 $z=x+iy$，$x,y\in\R$．
 
 \subsection{指数函数 $\e^z$}
 \begin{definition}[指数函数]
@@ -94,17 +94,17 @@ ${\e}^z\colon\C\to\C$ 定义为
     \item $\e^z \neq 0$;
     \item $\overline{\e^z} = \e^{\bar{z}}$;
     \item $\e^{z+2k\pi i}=\e^z$，$k\in\Z$；
-    \item $\abs{\e^z} = \e^x$。
+    \item $\abs{\e^z} = \e^x$．
 \end{enumerate}
 \end{theorem}
 
 \subsection{对数函数 $\Ln z$}
 \begin{definition}[对数函数（多值）]
-设 $z\in\C\setminus\{0\}$。$z$ 的\textbf{对数}（多值）定义为满足
+设 $z\in\C\setminus\{0\}$．$z$ 的\textbf{对数}（多值）定义为满足
 \[
 \e^w = z
 \]
-的所有 $w\in\C$。记作 $\Ln z$。
+的所有 $w\in\C$．记作 $\Ln z$．
 \end{definition}
 
 \begin{theorem}[对数函数（多值）公式]
@@ -119,7 +119,7 @@ ${\e}^z\colon\C\to\C$ 定义为
 \[
 \ln z \defeq \ln\abs{z} + i\arg z.
 \]
-称为\textbf{对数主值}，它在 $\C\setminus(-\infty,0]$ 上单值解析，且 $(\ln z)' = \dfrac{1}{z}$。
+称为\textbf{对数主值}，它在 $\C\setminus(-\infty,0]$ 上单值解析，且 $(\ln z)' = \dfrac{1}{z}$．
 \end{definition}
 
 \begin{example}
@@ -131,35 +131,35 @@ ${\e}^z\colon\C\to\C$ 定义为
     \end{tasks}
 \end{example}
 \begin{solution}
-    回顾对数主值定义：$\ln z = \ln|z| + i\arg z$，其中 $\arg z \in (-\pi, \pi]$。
+    回顾对数主值定义：$\ln z = \ln|z| + i\arg z$，其中 $\arg z \in (-\pi, \pi]$．
     \begin{enumerate}[label=(\arabic*)]
-        \item \textbf{不恒成立}。
+        \item \textbf{不恒成立}．
         
-            反例：$z = -1$。$\ln((-1)^2) = \ln 1 = 0$，但 $2\ln(-1) = 2(i\pi) = 2\pi i \neq 0$。
+            反例：$z = -1$．$\ln((-1)^2) = \ln 1 = 0$，但 $2\ln(-1) = 2(i\pi) = 2\pi i \neq 0$．
               
-            一般有 $\ln z^2 = 2\ln z + 2k\pi i$，$k\in\{-1,0,1\}$。
-        \item \textbf{不恒成立}。
+            一般有 $\ln z^2 = 2\ln z + 2k\pi i$，$k\in\{-1,0,1\}$．
+        \item \textbf{不恒成立}．
         
-            反例：$z = -1$。$\ln\sqrt{-1} = i\arg \sqrt{-1} = \pm i\frac{\pi}{2}$，但 $\frac12\ln(-1) = \frac12(i\pi) = i\frac{\pi}{2}$。两者不相等。
+            反例：$z = -1$．$\ln\sqrt{-1} = i\arg \sqrt{-1} = \pm i\frac{\pi}{2}$，但 $\frac12\ln(-1) = \frac12(i\pi) = i\frac{\pi}{2}$．两者不相等．
               
-            实际上 $\ln\sqrt{z} = \frac12\ln z$ 在主值意义下需注意分支割线，一般不恒等。
-        \item \textbf{不恒成立}。
+            实际上 $\ln\sqrt{z} = \frac12\ln z$ 在主值意义下需注意分支割线，一般不恒等．
+        \item \textbf{不恒成立}．
         
-            反例：$z_1 = z_2 = -1$。$\ln((-1)(-1)) = \ln 1 = 0$，但 $\ln(-1)+\ln(-1) = i\pi + i\pi = 2\pi i \neq 0$。
-              一般有 $\ln(z_1z_2) = \ln z_1 + \ln z_2 + 2k\pi i$，$k\in\{-1,0,1\}$。
+            反例：$z_1 = z_2 = -1$．$\ln((-1)(-1)) = \ln 1 = 0$，但 $\ln(-1)+\ln(-1) = i\pi + i\pi = 2\pi i \neq 0$．
+              一般有 $\ln(z_1z_2) = \ln z_1 + \ln z_2 + 2k\pi i$，$k\in\{-1,0,1\}$．
     \end{enumerate}
 \end{solution}
 
 \subsection{幂函数 $z^\alpha$}
 \begin{definition}[一般幂函数]
-设 $\alpha\in\C$，$z\in\C\setminus\{0\}$。定义
+设 $\alpha\in\C$，$z\in\C\setminus\{0\}$．定义
 \[
 z^\alpha \defeq \e^{\alpha\ln z} = \e^{\alpha(\ln\abs{z} + i\arg z)}.
 \]
 \end{definition}
 
 \begin{theorem}[一般幂函数的性质]
-当 $\alpha\in\R$ 时，$z^\alpha$ 的模为 $\abs{z}^\alpha$，辐角为 $\alpha\arg z$；特别地 $\alpha=\frac{1}{n}$（$n\in\N$）时，$z^{\frac{1}{n}}$ 为 $z$ 的 $n$ 次方根。
+当 $\alpha\in\R$ 时，$z^\alpha$ 的模为 $\abs{z}^\alpha$，辐角为 $\alpha\arg z$；特别地 $\alpha=\frac{1}{n}$（$n\in\N$）时，$z^{\frac{1}{n}}$ 为 $z$ 的 $n$ 次方根．
 \end{theorem}
 
 \subsection{三角函数}
@@ -184,15 +184,15 @@ $$\overline{\sin z} = \sin \bar{z},\quad \overline{\cos z}=\cos\bar z$$
 \end{definition}
 
 \begin{example}
-    解方程 $\cos z = 5$。
+    解方程 $\cos z = 5$．
 \end{example}
 \begin{solution}
     由定义 $\cos z = \frac{\e^{iz} + \e^{-iz}}{2} = 5$，设 $w = \e^{iz}$，则
     \[
     \frac{w + w^{-1}}{2} = 5 \implies w^2 - 10w + 1 = 0
     \]
-    解得 $w = 5 \pm \sqrt{24} = 5 \pm 2\sqrt{6}$。
-    因为 $w = \e^{iz} \neq 0$，两根均为正实数，均可取对数。
+    解得 $w = 5 \pm \sqrt{24} = 5 \pm 2\sqrt{6}$．
+    因为 $w = \e^{iz} \neq 0$，两根均为正实数，均可取对数．
     \[
     iz = \ln(5 \pm 2\sqrt{6}) + 2k\pi i,\quad k\in\Z
     \]
@@ -212,11 +212,11 @@ $$\overline{\sin z} = \sin \bar{z},\quad \overline{\cos z}=\cos\bar z$$
 
 \begin{theorem}[双曲函数的性质]
 \begin{enumerate}
-    \item $\cosh^2 z - \sinh^2 z = 1$。
-    \item $\sinh(-z)=-\sinh z$（奇），$\cosh(-z)=\cosh z$（偶）。
-    \item $\overline{\sinh z}=\sinh\bar z$，$\overline{\cosh z}=\cosh\bar z$。
-    \item $(\sinh z)' = \cosh z$，$(\cosh z)' = \sinh z$。
-    \item 与三角函数的关系：$\sinh z = -i\sin(iz)$，$\cosh z = \cos(iz)$。
+    \item $\cosh^2 z - \sinh^2 z = 1$．
+    \item $\sinh(-z)=-\sinh z$（奇），$\cosh(-z)=\cosh z$（偶）．
+    \item $\overline{\sinh z}=\sinh\bar z$，$\overline{\cosh z}=\cosh\bar z$．
+    \item $(\sinh z)' = \cosh z$，$(\cosh z)' = \sinh z$．
+    \item 与三角函数的关系：$\sinh z = -i\sin(iz)$，$\cosh z = \cos(iz)$．
 \end{enumerate}
 \end{theorem}
 
@@ -229,31 +229,31 @@ $$\overline{\sin z} = \sin \bar{z},\quad \overline{\cos z}=\cos\bar z$$
 \section{调和函数}
 \subsection{调和函数的定义}
 \begin{definition}[调和函数]
-设 $D\subseteq\R^2$ 为开集，$u\colon D\to\R$。若 $u$ 在 $D$ 内二阶连续可微，且满足 \textbf{Laplace 方程}
+设 $D\subseteq\R^2$ 为开集，$u\colon D\to\R$．若 $u$ 在 $D$ 内二阶连续可微，且满足 \textbf{Laplace 方程}
 \[
 \Delta u \defeq \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0,
 \]
-则称 $u$ 为 $D$ 内的\textbf{调和函数}。
+则称 $u$ 为 $D$ 内的\textbf{调和函数}．
 \end{definition}
 
 \begin{theorem}[解析函数的实部与虚部皆调和]
-设 $D\subseteq\C$ 为开集，$f=u+iv$ 在 $D$ 内解析。则 $u,v$ 均为 $D$ 内的调和函数。
+设 $D\subseteq\C$ 为开集，$f=u+iv$ 在 $D$ 内解析．则 $u,v$ 均为 $D$ 内的调和函数．
 \end{theorem}
 
 \subsection{共轭调和函数}
 \begin{definition}[共轭调和函数]
-设 $D\subseteq\C$ 为开集，$u\colon D\to\R$ 调和。若存在 $v\colon D\to\R$ 使得 $f=u+iv$ 在 $D$ 内解析，则称 $v$ 为 $u$ 在 $D$ 内的\textbf{共轭调和函数}。
+设 $D\subseteq\C$ 为开集，$u\colon D\to\R$ 调和．若存在 $v\colon D\to\R$ 使得 $f=u+iv$ 在 $D$ 内解析，则称 $v$ 为 $u$ 在 $D$ 内的\textbf{共轭调和函数}．
 \end{definition}
 
 \begin{theorem}[Cauchy--Riemann 方程的调和等价形式]
-设 $u,v\in C^2(D,\R)$。$f=u+iv$ 在 $D$ 内解析当且仅当 $u,v$ 均为 $D$ 内的调和函数，且满足 Cauchy--Riemann 方程
+设 $u,v\in C^2(D,\R)$．$f=u+iv$ 在 $D$ 内解析当且仅当 $u,v$ 均为 $D$ 内的调和函数，且满足 Cauchy--Riemann 方程
 \[
 \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y},\qquad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}.
 \]
 \end{theorem}
 
 \begin{example}
-    验证下列函数是调和函数，并求出以 $z=x+iy$ 为自变量的解析函数 $w=u+iv$。
+    验证下列函数是调和函数，并求出以 $z=x+iy$ 为自变量的解析函数 $w=u+iv$．
     \begin{tasks}[label-width=1.2em, label=(\arabic*)](2)
         \task $v=\arctan\frac{y}{x},\;x>0$
         \task $u=(x-y)(x^2+4xy+y^2)$
@@ -261,7 +261,7 @@ $$\overline{\sin z} = \sin \bar{z},\quad \overline{\cos z}=\cos\bar z$$
 \end{example}
 \begin{solution}
     \begin{enumerate}[label=(\arabic*)]
-        \item $v = \arctan\frac{y}{x}$ ($x>0$)。
+        \item $v = \arctan\frac{y}{x}$ ($x>0$)．
               计算偏导数：
               \[
               v_x = \frac{-y}{x^2+y^2},\quad v_y = \frac{x}{x^2+y^2}
@@ -269,17 +269,17 @@ $$\overline{\sin z} = \sin \bar{z},\quad \overline{\cos z}=\cos\bar z$$
               \[
               v_{xx} = \frac{2xy}{(x^2+y^2)^2},\quad v_{yy} = \frac{-2xy}{(x^2+y^2)^2}
               \]
-              故 $\Delta v = v_{xx} + v_{yy} = 0$，$v$ 是调和函数。
+              故 $\Delta v = v_{xx} + v_{yy} = 0$，$v$ 是调和函数．
               
-              由 C-R 方程 $u_x = v_y = \frac{x}{x^2+y^2}$，$u_y = -v_x = \frac{y}{x^2+y^2}$。
+              由 C-R 方程 $u_x = v_y = \frac{x}{x^2+y^2}$，$u_y = -v_x = \frac{y}{x^2+y^2}$．
               对 $u_x$ 积分：
               \[u = \int \frac{y}{x^2+y^2} dx = \frac12\ln(x^2+y^2) + C(y)\]
 
-              代入 $u_y$：$\frac{y}{x^2+y^2} + C'(y) = \frac{y}{x^2+y^2} \implies C'(y)=0 \implies C$ 为常数。
+              代入 $u_y$：$\frac{y}{x^2+y^2} + C'(y) = \frac{y}{x^2+y^2} \implies C'(y)=0 \implies C$ 为常数．
 
               解析函数为 $f(z) = \ln z + C$
         
-        \item $u = (x-y)(x^2+4xy+y^2) = x^3 + 3x^2y - 3xy^2 - y^3$。
+        \item $u = (x-y)(x^2+4xy+y^2) = x^3 + 3x^2y - 3xy^2 - y^3$．
               计算二阶偏导：
               \[
               u_x = 3x^2 + 6xy - 3y^2,\quad u_{xx} = 6x + 6y
@@ -287,7 +287,7 @@ $$\overline{\sin z} = \sin \bar{z},\quad \overline{\cos z}=\cos\bar z$$
               \[
               u_y = 3x^2 - 6xy - 3y^2,\quad u_{yy} = -6x - 6y
               \]
-              $\Delta u = u_{xx} + u_{yy} = 0$，$u$ 是调和函数。
+              $\Delta u = u_{xx} + u_{yy} = 0$，$u$ 是调和函数．
 
               注意到
               \[f'(z)=\pdv{u}{x}-i\pdv{u}{y}=3x^2+6xy-3y^2-i\bigl(3x^2-6xy-3y^2\bigr)=3(1-i)z^2\]

@@ -16,7 +16,7 @@
 设 $f\colon\R\to\C$ 满足：
 \begin{enumerate}[label=\roman*.]
     \item Dirichlet 条件：$f$ 在 $\R$ 上分段连续，且在每个有限区间上只有有限个极值点；
-    \item 绝对可积性：$\displaystyle\int_{-\infty}^{+\infty}\abs{f(x)}\,\d x < \infty$。
+    \item 绝对可积性：$\displaystyle\int_{-\infty}^{+\infty}\abs{f(x)}\,\d x < \infty$．
 \end{enumerate}
 即$f\in L^1(\R)$，则在 $f$ 的连续点 $x$ 处有
 \[
@@ -34,7 +34,7 @@
 \begin{definition}[积分变换]
     通过积分运算将像原函数 $f(t)$ 映射为像函数 $F(s)$ 的变换称为\textbf{积分变换}，记作
     \[F(s) = \mathcal{T}[f(t)] = \int_{a}^{b} K(s,t)f(t)\,\d t,\]
-其中 $K(s,t)$ 称为\textbf{核函数}。
+其中 $K(s,t)$ 称为\textbf{核函数}．
 \end{definition}
 
 \begin{definition}[傅里叶变换]
@@ -76,7 +76,7 @@
 \end{solution}
 
 \begin{example}
-    已知 $f(t)$ 的傅里叶变换为 $F(\omega) = \dfrac{\sin\omega}{\omega}$，求 $f(t)$。
+    已知 $f(t)$ 的傅里叶变换为 $F(\omega) = \dfrac{\sin\omega}{\omega}$，求 $f(t)$．
 \end{example}
 \begin{solution}
     由傅里叶逆变换公式可知
@@ -106,7 +106,7 @@
     单位脉冲函数 $\delta(t)$ 是满足以下两个条件的\textbf{广义函数}：
     \begin{tasks}[label=\roman*.](2)
         \task $\displaystyle\delta(t) = \begin{cases}0, & t\neq 0\\ \infty, & t = 0\end{cases}$；
-        \task $\displaystyle\int_{-\infty}^{+\infty}\delta(t)\,\d t = 1$。
+        \task $\displaystyle\int_{-\infty}^{+\infty}\delta(t)\,\d t = 1$．
     \end{tasks}
 \end{definition}
 
@@ -141,7 +141,7 @@
 \subsection{基本性质}
 
 \begin{theorem}[线性性]
-    设 $f,g\in L^1(\R)$，$\alpha,\beta\in\C$。则
+    设 $f,g\in L^1(\R)$，$\alpha,\beta\in\C$．则
     \[
         \F[\alpha f + \beta g] = \alpha\F[f] + \beta\F[g]
     \]
@@ -151,7 +151,7 @@
 \end{theorem}
 
 \begin{theorem}[位移性质]
-    设 $f\in L^1(\R)$，$t_0\in\R$。则
+    设 $f\in L^1(\R)$，$t_0\in\R$．则
     \[
         \F[f(t-t_0)](\omega) = \e^{-i\omega t_0}F(\omega),\qquad
         \F[\e^{i\omega_0 t} f(t)](\omega) = F(\omega-\omega_0)
@@ -159,7 +159,7 @@
 \end{theorem}
 
 \begin{theorem}[对称性质]
-    设 $f\in L^1(\R)$。则
+    设 $f\in L^1(\R)$．则
     \[
         \F[f(-t)](\omega) = F(-\omega),\qquad
         \F[F(t)](\omega) = 2\pi f(-\omega)
@@ -167,7 +167,7 @@
 \end{theorem}
 
 \begin{theorem}[微分性质]
-    设 $f,f'\in L^1(\R)$。则
+    设 $f,f'\in L^1(\R)$．则
     \[
         \F[f'(t)] = i\omega F(\omega)
     \]
@@ -178,14 +178,14 @@
 \end{theorem}
 
 \begin{theorem}[积分性质]
-    设 $g(t) = \displaystyle\int_{-\infty}^{t} f(\tau)\,\d\tau$，且 $F(0)=0$。则
+    设 $g(t) = \displaystyle\int_{-\infty}^{t} f(\tau)\,\d\tau$，且 $F(0)=0$．则
     \[
         \F[g(t)] = \frac{1}{i\omega}F(\omega)
     \]
 \end{theorem}
 
 \begin{theorem}[乘 $t^n$ 性质]
-    设 $f\in L^1(\R)$，$tf(t)\in L^1(\R)$。则 $F$ 可微且
+    设 $f\in L^1(\R)$，$tf(t)\in L^1(\R)$．则 $F$ 可微且
     \[
         \F[-it f(t)] = F'(\omega)
     \]
@@ -194,7 +194,7 @@
 \subsection{常用函数的傅里叶变换}
 
 \begin{theorem}[常用傅里叶变换对]
-    设 $a>0$。则
+    设 $a>0$．则
     \[
     \begin{array}{ll}
         \textbf{(1)} & \F[\delta(t)] = 1 \\
@@ -208,7 +208,7 @@
 \end{theorem}
 
 \begin{example}
-    求函数 $\sin\left(5t+\dfrac23\right)$ 的傅里叶变换。
+    求函数 $\sin\left(5t+\dfrac23\right)$ 的傅里叶变换．
 \end{example}
 \begin{solution}
     由傅里叶变换的线性性和位移性质可知
@@ -232,14 +232,14 @@
 \subsection{卷积的定义}
 
 \begin{definition}[卷积]
-设 $f,g\in L^1(\R)$。定义 $f$ 与 $g$ 的\textbf{卷积}为
+设 $f,g\in L^1(\R)$．定义 $f$ 与 $g$ 的\textbf{卷积}为
 \[
 (f*g)(t) \defeq \int_{-\infty}^{+\infty} f(\tau)g(t-\tau)\,\d\tau,\quad t\in\R.
 \]
 \end{definition}
 
 \begin{theorem}[卷积的基本性质]
-设 $f,g,h\in L^1(\R)$。则
+设 $f,g,h\in L^1(\R)$．则
 \begin{enumerate}
     \item 交换律：$f*g = g*f$
     \item 结合律：$(f*g)*h = f*(g*h)$
@@ -251,7 +251,7 @@
 \subsection{卷积定理}
 
 \begin{theorem}[卷积定理（Fourier 变换）]
-设 $f,g\in L^1(\R)$。则 $f*g\in L^1(\R)$，且
+设 $f,g\in L^1(\R)$．则 $f*g\in L^1(\R)$，且
 \[
 \F[f*g] = \F[f]\cdot \F[g],\qquad
 \F[f\cdot g] = \frac{1}{2\pi}\F[f]*\F[g].
@@ -277,7 +277,7 @@
     \end{cases}
     \]
 
-    则 $f\in L^1(\R)$，且在 $\R$ 上分段连续。由傅里叶积分定理可知
+    则 $f\in L^1(\R)$，且在 $\R$ 上分段连续．由傅里叶积分定理可知
     \[
     f(t) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} F(\omega)\e^{i\omega t}\,\d\omega,
     \]

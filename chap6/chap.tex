@@ -13,15 +13,15 @@
 \subsection{有限点留数的定义及留数定理}
 
 \begin{definition}[有限点留数]
-设 $z_0$ 为 $f$ 的孤立奇点，$\gamma$ 为绕 $z_0$ 的充分小正向闭曲线。称
+设 $z_0$ 为 $f$ 的孤立奇点，$\gamma$ 为绕 $z_0$ 的充分小正向闭曲线．称
 \[
 \Res(f,z_0) \defeq \frac{1}{2\pi i}\oint_\gamma f(z)\,\d z = c_{-1}
 \]
-为 $f$ 在 $z_0$ 处的\textbf{留数}（residue），其中 $c_{-1}$ 为 $f$ 在 $z_0$ 处 Laurent 展开中 $(z-z_0)^{-1}$ 项的系数。
+为 $f$ 在 $z_0$ 处的\textbf{留数}（residue），其中 $c_{-1}$ 为 $f$ 在 $z_0$ 处 Laurent 展开中 $(z-z_0)^{-1}$ 项的系数．
 \end{definition}
 
 \begin{theorem}[留数定理]
-设 $D$ 为有界闭域，$\partial D$ 为逐段光滑正向闭曲线。$f$ 在 $D$ 内除有限个孤立奇点 $z_1,z_2,\dots,z_n$ 外处处解析，在 $\partial D$ 上连续。则
+设 $D$ 为有界闭域，$\partial D$ 为逐段光滑正向闭曲线．$f$ 在 $D$ 内除有限个孤立奇点 $z_1,z_2,\dots,z_n$ 外处处解析，在 $\partial D$ 上连续．则
 \[
 \oint_{\partial D} f(z)\,\d z = 2\pi i\sum_{k=1}^{n}\Res(f,z_k).
 \]
@@ -37,7 +37,7 @@
 \subsection{有限点留数的求法}
 
 \begin{theorem}[利用 Laurent 展开]
-设 $z_0$ 为 $f$ 的孤立奇点。若能求出 $f$ 在 $z_0$ 处的 Laurent 展开
+设 $z_0$ 为 $f$ 的孤立奇点．若能求出 $f$ 在 $z_0$ 处的 Laurent 展开
 \[
 f(z) = \sum_{n=-\infty}^{\infty} c_n (z-z_0)^n,
 \]
@@ -57,7 +57,7 @@ f(z) = \sum_{n=-\infty}^{\infty} c_n (z-z_0)^n,
     \[
     f(z)=\frac{\varphi(z)}{(z-z_0)^n}
     \]
-    其中 $\varphi(z)$ 在 $z_0$ 处解析，$\varphi(z_0)\neq 0$。则
+    其中 $\varphi(z)$ 在 $z_0$ 处解析，$\varphi(z_0)\neq 0$．则
     \[
     \Res(f,z_0) = \frac{1}{(n-1)!}\lim_{z\to z_0}\frac{\d^{n-1}}{\d z^{n-1}}\bigl[(z-z_0)^n f(z)\bigr] = \frac{1}{(n-1)!}\lim_{z\to z_0}\frac{\d^{n-1}}{\d z^{n-1}}\varphi(z)
     \]
@@ -102,15 +102,15 @@ f(z) = \sum_{n=-\infty}^{\infty} c_n (z-z_0)^n,
 \section{无穷远点的留数}
 
 \begin{definition}[无穷远点留数]
-设 $f$ 以 $\infty$ 为孤立奇点。称
+设 $f$ 以 $\infty$ 为孤立奇点．称
 \[
 \Res(f,\infty) \defeq \frac{1}{2\pi i}\oint_{\gamma^-} f(z)\,\d z = -\Res\!\left(\frac{1}{z^2}f\!\left(\frac{1}{z}\right),0\right)
 \]
-为 $f$ 在 $\infty$ 处的\textbf{留数}，其中 $\gamma^-$ 表示沿 $\gamma$ 的反方向（即顺时针方向）。
+为 $f$ 在 $\infty$ 处的\textbf{留数}，其中 $\gamma^-$ 表示沿 $\gamma$ 的反方向（即顺时针方向）．
 \end{definition}
 
 \begin{theorem}[Laurent 展开等价形式]
-设 $f$ 在 $\abs{z}>R$ 内解析。则在 $\infty$ 附近
+设 $f$ 在 $\abs{z}>R$ 内解析．则在 $\infty$ 附近
 \[
 f(z) = \sum_{n=-\infty}^{\infty} c_n z^n,
 \]
@@ -140,7 +140,7 @@ f(z) = \sum_{n=-\infty}^{\infty} c_n z^n,
         \]
         注意到 $\lim\limits_{z\to 0}\dfrac{\sin^5 z}{z^5} = 1$，即 $\Res\!\left(\dfrac{\sin^5 z}{z^5},0\right) = 0$，从而
         \[\oint_{\abs{z}=2}\frac{z^5}{1+z^6}\,\d z = 0\]
-        \item 由 $\displaystyle\frac{z^5}{1+z^6} = \frac{1}{z(1+z^{-6})} = \frac{1}{z}-\frac{1}{z^7}+\frac{1}{z^{13}}-\cdots$，得 $\Res(f,\infty)=-1$。由留数定理
+        \item 由 $\displaystyle\frac{z^5}{1+z^6} = \frac{1}{z(1+z^{-6})} = \frac{1}{z}-\frac{1}{z^7}+\frac{1}{z^{13}}-\cdots$，得 $\Res(f,\infty)=-1$．由留数定理
             \[
             \oint_{\abs{z}=2}\frac{z^5}{1+z^6}\,\d z = -2\pi i \Res(f,\infty) = 2\pi i.
             \]
@@ -153,20 +153,20 @@ f(z) = \sum_{n=-\infty}^{\infty} c_n z^n,
 \subsection{$\displaystyle\int_0^{2\pi} R(\cos\theta,\sin\theta)\,\d\theta$ 型积分}
 
 \begin{theorem}[三角有理积分]
-设 $R(u,v)$ 为二元有理函数，$R(\cos\theta,\sin\theta)$ 在 $\theta\in[0,2\pi]$ 上无奇点。设
+设 $R(u,v)$ 为二元有理函数，$R(\cos\theta,\sin\theta)$ 在 $\theta\in[0,2\pi]$ 上无奇点．设
 \[F(z)=\frac{1}{iz}R\left(\frac{z+z^{-1}}{2},\frac{z-z^{-1}}{2i}\right)\]
 则
 \[
 \int_0^{2\pi} R(\cos\theta,\sin\theta)\,\d\theta =\oint_{\abs{z}=1} F(z)\,\d z = 2\pi i\sum_{k=1}^{n}\Res\!\left(F(z),z_k\right),
 \]
-其中 $z_k$ 为 $F(z)$ 在 $\abs{z}<1$ 内的全部极点。
+其中 $z_k$ 为 $F(z)$ 在 $\abs{z}<1$ 内的全部极点．
 \end{theorem}
 
 \begin{example}
-计算 $\displaystyle I = \int_0^{2\pi}\frac{\d\theta}{1-2p\cos\theta + p^2}$，$\abs{p}<1$。
+计算 $\displaystyle I = \int_0^{2\pi}\frac{\d\theta}{1-2p\cos\theta + p^2}$，$\abs{p}<1$．
 \end{example}
 \begin{solution}
-令 $z = \e^{i\theta}$，则 $\cos\theta = \dfrac{1}{2}\!\left(z+\dfrac{1}{z}\right)$，$\d\theta = \dfrac{\d z}{iz}$。
+令 $z = \e^{i\theta}$，则 $\cos\theta = \dfrac{1}{2}\!\left(z+\dfrac{1}{z}\right)$，$\d\theta = \dfrac{\d z}{iz}$．
 \[
 I = \oint_{\abs{z}=1}\frac{1}{iz}\cdot \frac{1}{1-p\!\left(z+\frac{1}{z}\right)+p^2}\,\d z
 \]
@@ -174,7 +174,7 @@ I = \oint_{\abs{z}=1}\frac{1}{iz}\cdot \frac{1}{1-p\!\left(z+\frac{1}{z}\right)+
 \[
 I = \oint_{\abs{z}=1}\frac{\d z}{i(1-pz)(z-p)}.
 \]
-$\abs{p}<1$ 时单位圆内仅有单极点 $z=p$。
+$\abs{p}<1$ 时单位圆内仅有单极点 $z=p$．
 \[
 \Res\!\left(\frac{1}{i(1-pz)(z-p)},p\right) = \frac{1}{i(1-p^2)}.
 \]
@@ -185,16 +185,16 @@ I = 2\pi i \cdot \frac{1}{i(1-p^2)} = \frac{2\pi}{1-p^2}.
 \end{solution}
 
 \begin{example}
-    计算 $I=\displaystyle\int_0^{2\pi}\frac{\sin^2\theta}{a+b\cos\theta}\,\d\theta$，其中 $a>b>0$。
+    计算 $I=\displaystyle\int_0^{2\pi}\frac{\sin^2\theta}{a+b\cos\theta}\,\d\theta$，其中 $a>b>0$．
 \end{example}
 \begin{solution}
-    设 $z = \e^{i\theta}$，则 $\sin^2\theta = \dfrac{1}{4}\!\left(z-\dfrac{1}{z}\right)^2$，$\cos\theta = \dfrac{1}{2}\!\left(z+\dfrac{1}{z}\right)$，$\d\theta = \dfrac{\d z}{iz}$。
+    设 $z = \e^{i\theta}$，则 $\sin^2\theta = \dfrac{1}{4}\!\left(z-\dfrac{1}{z}\right)^2$，$\cos\theta = \dfrac{1}{2}\!\left(z+\dfrac{1}{z}\right)$，$\d\theta = \dfrac{\d z}{iz}$．
     \begin{align*}
         I &= \oint_{\abs{z}=1}\frac{1}{iz}\cdot \frac{-\frac{1}{4}\left(z-\frac{1}{z}\right)^2}{a+b\cdot\frac{1}{2}\left(z+\frac{1}{z}\right)}\,\d z
         = \oint_{\abs{z}=1}\frac{(z^2-1)^2}{-2biz^2(z^2+\frac{2a}{b}z+1)}\,\d z\\
         &= \frac{i}{2b}\oint_{\abs{z}=1}\frac{(z^2-1)^2}{z^2(z^2+\frac{2a}{b}z+1)}\,\d z = \frac{i}{2b}\oint_{\abs{z}=1}F(z)\,\d z
     \end{align*}
-    在 $\abs{z}<1$ 内有两个极点，$z=0$（2 阶）和 $z_1=-\dfrac{-a+\sqrt{a^2-b^2}}{b}$（单极点）。
+    在 $\abs{z}<1$ 内有两个极点，$z=0$（2 阶）和 $z_1=-\dfrac{-a+\sqrt{a^2-b^2}}{b}$（单极点）．
     \[\Res(F, 0)=\lim_{z\to 0}\frac{\d}{\d z}\bigl[z^2F(z)\bigr]=-\frac{2a}{b}\]
     \[\Res\left(F, \frac{-a+\sqrt{a^2-b^2}}{b}\right)=\lim_{z\to z_1}(z-z_1)F(z)=\frac{2\sqrt{a^2-b^2}}{b}\]
     于是
@@ -204,18 +204,18 @@ I = 2\pi i \cdot \frac{1}{i(1-p^2)} = \frac{2\pi}{1-p^2}.
 \subsection{$\displaystyle\int_{-\infty}^{+\infty} \frac{P(x)}{Q(x)}\,\d x$ 型积分}
 
 \begin{theorem}[有理函数的无穷积分]
-设 $f(x) = \dfrac{P(x)}{Q(x)}$ 为最简有理分式，$Q(x)$ 的次数至少比 $P(x)$ 高两次，且 $Q$ 在实轴上无零点。则
+设 $f(x) = \dfrac{P(x)}{Q(x)}$ 为最简有理分式，$Q(x)$ 的次数至少比 $P(x)$ 高两次，且 $Q$ 在实轴上无零点．则
 \[
 \int_{-\infty}^{+\infty} f(x)\,\d x = 2\pi i\sum_{\Im z_k>0}\Res(f,z_k),
 \]
-其中求和遍历 $f(z)$ 在上半平面 $\Im z>0$ 内的全部极点。
+其中求和遍历 $f(z)$ 在上半平面 $\Im z>0$ 内的全部极点．
 \end{theorem}
 
 \begin{example}
     计算 $\displaystyle I_n = \int_{0}^{+\infty}\frac{\d x}{(1+x^2)^{n+1}},\; n \in \mathbb{N}$
 \end{example}
 \begin{solution}
-    注意到 $z=i$ 为 $f(z)=\dfrac{1}{(1+z^2)^{n+1}}$ 的 $(n+1)$ 阶极点。由留数公式
+    注意到 $z=i$ 为 $f(z)=\dfrac{1}{(1+z^2)^{n+1}}$ 的 $(n+1)$ 阶极点．由留数公式
     \begin{align*}
         \Res(f,i) &= \frac{1}{n!}\lim_{z\to i}\frac{\d^n}{\d z^n}\frac{(z-i)^{n+1}}{(1+z^2)^{n+1}} = \frac{1}{n!}\lim_{z\to i}\frac{\d^n}{\d z^n}\frac{1}{(z+i)^{n+1}}\\[1.2em]
         &= \frac{1}{n!}\lim_{z\to i}\frac{(-1)^n(2n)!}{n!(z+i)^{2n+1}} = \frac{(2n)!}{i2^{2n+1}(n!)^2}
@@ -229,7 +229,7 @@ I = 2\pi i \cdot \frac{1}{i(1-p^2)} = \frac{2\pi}{1-p^2}.
 \begin{theorem}
 设 $g(z) = \dfrac{P(z)}{Q(z)}$ 为最简有理分式，$Q(z)$ 的次数比 $P(z)$ 的次数高，且$Q$在实轴上无零点，则
 \[\int_{-\infty}^{+\infty} g(x)\e^{iax}\,\d x = 2\pi i\sum_{\Im z_k>0}\Res(g,z_k),\quad a>0\]
-其中求和遍历 $g(z)$ 在上半平面 $\Im z>0$ 内的全部极点。
+其中求和遍历 $g(z)$ 在上半平面 $\Im z>0$ 内的全部极点．
 \end{theorem}
 
 \begin{example}
@@ -248,10 +248,10 @@ I = \pi\e^{-a}
 
 \section{练习}
 \begin{exercise}
-    求 $f(z) = \dfrac{z^{2n}}{1+z^n},\; n \in \Z$ 在孤立奇点处的留数。
+    求 $f(z) = \dfrac{z^{2n}}{1+z^n},\; n \in \Z$ 在孤立奇点处的留数．
 \end{exercise}
 \begin{solution}
-    分情况讨论 $n$ 的取值。
+    分情况讨论 $n$ 的取值．
 
     \subsection*{$n>0$时}
     \begin{itemize}
@@ -263,7 +263,7 @@ I = \pi\e^{-a}
             \]
             由于
             \[ \left.(1+z^n)'\right|_{z=z_k} =nz_k^{n-1}\ne0, \]
-            所以这些点都是一阶极点。由商的留数公式，
+            所以这些点都是一阶极点．由商的留数公式，
             \[
             \Res(f,z_k)=\frac{z_k^{2n}}{n z_k^{\,n-1}}
             =\frac{1}{n z_k^{\,n-1}}
@@ -289,7 +289,7 @@ I = \pi\e^{-a}
     \[
     f(z)=\frac12
     \]
-    为常函数，在有限复平面上无孤立奇点。而 $\lim\limits_{z\to\infty}f(z)=\frac12$，即无穷远点为可去奇点，故
+    为常函数，在有限复平面上无孤立奇点．而 $\lim\limits_{z\to\infty}f(z)=\frac12$，即无穷远点为可去奇点，故
     \[\boxed{\Res(f,\infty)=0}\]
 
     \subsection*{$n<0$时}
@@ -297,7 +297,7 @@ I = \pi\e^{-a}
     \[
     f(z)=\frac{1}{z^m(1+z^m)}.
     \]
-    容易看出有限复平面上孤立奇点为 $z=0$ 和 $z^m=-1$。
+    容易看出有限复平面上孤立奇点为 $z=0$ 和 $z^m=-1$．
     \begin{itemize}
         \item \textbf{$z=0$}
             
@@ -322,7 +322,7 @@ I = \pi\e^{-a}
             \]
             由于
             \[ \left.(1+z^m)'\right|_{z=z_k} =mz_k^{m-1}\ne0, \]
-            所以这些点都是一阶极点。由商的留数公式，
+            所以这些点都是一阶极点．由商的留数公式，
             \[\boxed{
             \Res(f,z_k)=\frac{1}{mz_k^{\,m-1}}
             =\frac{z_k}{m}
